@@ -56,7 +56,8 @@ function Game.OnInitOK()
 --    if ctrl ~= nil and AppConst.ExampleMode == 1 then
 --        ctrl:Awake();
 --    end
---    logWarn('LuaFramework InitOK--->>>');
+
+    log('LuaFramework InitOK--->>>');
 end
 
 --测试协同--
