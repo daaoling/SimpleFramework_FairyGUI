@@ -18,6 +18,8 @@ require "Logic/CtrlManager"
 
 require "Controller/PromptCtrl"
 
+local config = require "Config"
+
 --管理器--
 Game = {};
 local this = Game;
@@ -57,10 +59,14 @@ function Game.OnInitOK()
         ctrl:Awake();
     end
 
+
 --    local timer = Timer.New(this.delay, 1, false, false)
 --    timer:Start()
 --    log('LuaFramework InitOK--->>>');
 --    Event.AddListener("signal",this.handler);
+     
+--    log('LuaFramework InitOK--->>>');
+--    log(config.DemoByID[101].Name)
 end
 
 --测试协同--
