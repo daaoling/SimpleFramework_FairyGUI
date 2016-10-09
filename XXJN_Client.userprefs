@@ -1,29 +1,21 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Editor/CustomSettings.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Source/Generate/UIInputWrap.cs">
     <Files>
       <File FileName="Assets/Scripts/Manager/PanelManager.cs" Line="39" Column="32" />
       <File FileName="Assets/Editor/CustomSettings.cs" Line="147" Column="21" />
+      <File FileName="Assets/Source/Generate/UIInputWrap.cs" Line="37" Column="18" />
+      <File FileName="Assets/Source/Generate/UnityEngine_TransformWrap.cs" Line="1" Column="30" />
+      <File FileName="Assets/Source/Generate/UnityEngine_GameObjectWrap.cs" Line="11" Column="30" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Assembly-CSharp" expanded="True">
-            <Node name="NGUI" expanded="True">
-              <Node name="Scripts" expanded="True">
-                <Node name="UI" expanded="True" />
-              </Node>
-            </Node>
-            <Node name="Scripts" expanded="True">
-              <Node name="Manager" expanded="True" />
-            </Node>
             <Node name="Source" expanded="True">
-              <Node name="Generate" expanded="True" />
-            </Node>
-          </Node>
-          <Node name="Assembly-CSharp-Editor" expanded="True">
-            <Node name="Editor" expanded="True">
-              <Node name="CustomSettings.cs" selected="True" />
+              <Node name="Generate" expanded="True">
+                <Node name="UIInputWrap.cs" selected="True" />
+              </Node>
             </Node>
           </Node>
         </State>
