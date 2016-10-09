@@ -12,6 +12,7 @@ public static class LuaBinder
 		LuaInterface_DebuggerWrap.Register(L);
 		UIPanelWrap.Register(L);
 		UILabelWrap.Register(L);
+		UIInputWrap.Register(L);
 		UIGridWrap.Register(L);
 		NetworkManagerV2Wrap.Register(L);
 		UIEventListenerWrap.Register(L);
@@ -105,6 +106,9 @@ public static class LuaBinder
 		L.EndModule();
 		L.BeginModule("UIDrawCall");
 		L.RegFunction("OnRenderCallback", UIDrawCall_OnRenderCallback);
+		L.EndModule();
+		L.BeginModule("UIInput");
+		L.RegFunction("OnValidate", UIInput_OnValidate);
 		L.EndModule();
 		L.BeginModule("UIGrid");
 		L.RegFunction("OnReposition", UIGrid_OnReposition);
@@ -564,6 +568,33 @@ public static class LuaBinder
 			{
 				LuaTable self = ToLua.CheckLuaTable(L, 2);
 				Delegate arg1 = DelegateFactory.CreateDelegate(typeof(UIDrawCall.OnRenderCallback), func, self);
+				ToLua.Push(L, arg1);
+			}
+			return 1;
+		}
+		catch(Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int UIInput_OnValidate(IntPtr L)
+	{
+		try
+		{
+			int count = LuaDLL.lua_gettop(L);
+			LuaFunction func = ToLua.CheckLuaFunction(L, 1);
+
+			if (count == 1)
+			{
+				Delegate arg1 = DelegateFactory.CreateDelegate(typeof(UIInput.OnValidate), func);
+				ToLua.Push(L, arg1);
+			}
+			else
+			{
+				LuaTable self = ToLua.CheckLuaTable(L, 2);
+				Delegate arg1 = DelegateFactory.CreateDelegate(typeof(UIInput.OnValidate), func, self);
 				ToLua.Push(L, arg1);
 			}
 			return 1;

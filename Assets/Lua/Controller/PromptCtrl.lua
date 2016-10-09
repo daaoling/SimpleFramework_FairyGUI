@@ -1,4 +1,4 @@
-require "Common/define"
+--require "Common/define"
 
 require "3rd/pblua/login_pb"
 require "3rd/pbc/protobuf"
@@ -23,7 +23,7 @@ end
 
 function PromptCtrl.Awake()
 	logWarn("PromptCtrl.Awake--->>");
-	panelMgr:CreatePanel('Prompt', this.OnCreate);
+	panelMgr:CreatePanel("PromptPanel", this.OnCreate);
 end
 
 --启动事件--
@@ -35,11 +35,11 @@ function PromptCtrl.OnCreate(obj)
 	prompt = transform:GetComponent('LuaBehaviour');
 	logWarn("Start lua--->>"..gameObject.name);
 
-	this.InitPanel();	--初始化面板--
---  prompt:AddClick(PromptPanel.btnOpen, this.OnClick);
-  listener = UIEventListener.Get(PromptPanel.btnOpen)
-  AddClick(listener, this.OnClick)
---  AddClick(listener, this.OnClick)
+--	this.InitPanel();	--初始化面板--
+----  prompt:AddClick(PromptPanel.btnOpen, this.OnClick);
+--  listener = UIEventListener.Get(PromptPanel.btnOpen)
+  AddClick(PromptPanel.btnRegister, this.Register)
+  AddClick(PromptPanel.btnLogin, this.Login)
 --  local timer = Timer.New(this.delay,5,false,true)
 --  timer:Start()
 end
@@ -72,13 +72,8 @@ function PromptCtrl.InitPanel()
 	parent:GetComponent('WrapGrid'):InitGrid();
 end
 
---滚动项单击事件--
-function PromptCtrl.OnItemClick(go)
-	log(go.name);
-end
 
---单击事件--
-function PromptCtrl.OnClick(go)
+function PromptCtrl.Register(go)
 --	if TestProtoType == ProtocalType.BINARY then
 --		this.TestSendBinary();
 --	end
@@ -91,10 +86,19 @@ function PromptCtrl.OnClick(go)
 --	if TestProtoType == ProtocalType.SPROTO then
 --		this.TestSendSproto();
 --	end
---	logWarn("OnClick---->>>"..go.name);
-    this.TestItSelf();
+	log("OnClick---->>>"..go.name);
+	log("OnClick---->>>"..PromptPanel.roleName.value);
+  log("OnClick---->>>"..PromptPanel.password.value);
+--    this.TestItSelf();
 --    this.TestSendPblua();
 end
+
+--滚动项单击事件--
+function PromptCtrl.Login(go)
+	log(go.name);
+end
+
+
 
 function PromptCtrl.TestItSelf()
   local login = Login_pb.LoginRequest()

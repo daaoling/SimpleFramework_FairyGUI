@@ -1,19 +1,21 @@
 
 --增加监听--
-function AddClick(listener, func)
-    if listener.onClick then
-        listener.onClick = listener.onClick + func                      
-    else
-        listener.onClick = func
-    end                
+function AddClick(btn, func)
+  listener = UIEventListener.Get(btn)
+  if listener.onClick then
+      listener.onClick = listener.onClick + func                      
+  else
+      listener.onClick = func
+  end                
 end
 
-function RemoveClick(listener, func)
-    if listener.onClick then
-        listener.onClick = listener.onClick - func      
-    else
-        print('empty delegate')
-    end
+function RemoveClick(btn, func)
+  listener = UIEventListener.Get(btn)
+  if listener.onClick then
+      listener.onClick = listener.onClick - func      
+  else
+      print('empty delegate')
+  end
 end
 
 --输出日志--

@@ -22,8 +22,25 @@ namespace LuaFramework {
         /// </summary>
         /// <param name="type"></param>
         public void CreatePanel(string name, LuaFunction func = null) {
-            StartCoroutine(StartCreatePanel(name, func));
+			StartCoroutine(StartCreatePanelV2(name, func));
         }
+
+		IEnumerator StartCreatePanelV2(string name, LuaFunction func = null)
+		{
+			string loadpath = "UI"+"/"+name;
+			Debug.Log(" loadpath " + loadpath);
+			GameObject prefab = Resources.Load(loadpath) as GameObject;
+			yield return new WaitForEndOfFrame();
+
+			GameObject go = NGUITools.AddChild(Parent.gameObject,prefab);
+			go.name = name;
+			yield return new WaitForEndOfFrame();
+
+			go.AddComponent<LuaBehaviour>();
+			
+			if (func != null) func.Call(go);
+			Debug.Log("StartCreatePanel------>>>>" + name);
+		}
 
         /// <summary>
         /// ´´½¨Ãæ°å

@@ -556,7 +556,7 @@ namespace LuaInterface
         public void OpenToLuaLibs()
         {
             LuaDLL.tolua_openlibs(L);
-        }
+		}
 
         public void ToLuaPushTraceback()
         {

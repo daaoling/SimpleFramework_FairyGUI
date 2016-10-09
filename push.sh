@@ -1,4 +1,4 @@
 #!/bin/sh
 git add --all
-git commit -m "添加登陆界面;调整框架类别" 
+git commit -m "添加登录界面lua逻辑" 
 git push origin master
