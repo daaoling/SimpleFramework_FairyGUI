@@ -5,8 +5,8 @@ CtrlNames = {
 }
 
 PanelNames = {
-	"PromptPanel",	
-	"MessagePanel",
+  "PromptPanel",	
+  "MessagePanel"
 }
 
 --协议类型--

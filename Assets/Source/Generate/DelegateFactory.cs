@@ -31,6 +31,7 @@ public static class DelegateFactory
 		dict.Add(typeof(UIWidget.OnPostFillCallback), UIWidget_OnPostFillCallback);
 		dict.Add(typeof(UIDrawCall.OnRenderCallback), UIDrawCall_OnRenderCallback);
 		dict.Add(typeof(UIWidget.HitCheck), UIWidget_HitCheck);
+		dict.Add(typeof(UIInput.OnValidate), UIInput_OnValidate);
 		dict.Add(typeof(UIGrid.OnReposition), UIGrid_OnReposition);
 		dict.Add(typeof(System.Comparison<UnityEngine.Transform>), System_Comparison_UnityEngine_Transform);
 		dict.Add(typeof(System.Action<NotiData>), System_Action_NotiData);
@@ -819,6 +820,61 @@ public static class DelegateFactory
 		{
 			UIWidget_HitCheck_Event target = new UIWidget_HitCheck_Event(func, self);
 			UIWidget.HitCheck d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	class UIInput_OnValidate_Event : LuaDelegate
+	{
+		public UIInput_OnValidate_Event(LuaFunction func) : base(func) { }
+		public UIInput_OnValidate_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public char Call(string param0, int param1, char param2)
+		{
+			func.BeginPCall();
+			func.Push(param0);
+			func.Push(param1);
+			func.Push(param2);
+			func.PCall();
+			char ret = (char)func.CheckNumber();
+			func.EndPCall();
+			return ret;
+		}
+
+		public char CallWithSelf(string param0, int param1, char param2)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.Push(param0);
+			func.Push(param1);
+			func.Push(param2);
+			func.PCall();
+			char ret = (char)func.CheckNumber();
+			func.EndPCall();
+			return ret;
+		}
+	}
+
+	public static Delegate UIInput_OnValidate(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			UIInput.OnValidate fn = delegate(string param0, int param1, char param2) { return '\0'; };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			UIInput_OnValidate_Event target = new UIInput_OnValidate_Event(func);
+			UIInput.OnValidate d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			UIInput_OnValidate_Event target = new UIInput_OnValidate_Event(func, self);
+			UIInput.OnValidate d = target.CallWithSelf;
 			target.method = d.Method;
 			return d;
 		}
