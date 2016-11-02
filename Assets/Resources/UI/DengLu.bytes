@@ -1,0 +1,15 @@
+inq91.xml|466|<component size="1152,648">
+  <displayList>
+    <image id="n0" name="n0" src="inq93" xy="0,0" size="1152,648"/>
+    <image id="n3" name="n3" src="inq94" xy="387,180" size="375,284"/>
+    <text id="n1" name="name" xy="518,268" size="169,28" input="true" prompt="请输入账号" fontSize="12" autoSize="none" text=""/>
+    <text id="n2" name="password" xy="519,318" size="170,30" input="true" prompt="请输入密码" fontSize="12" autoSize="none" text=""/>
+  </displayList>
+</component>package.xml|339|<packageDescription id="sv6e6mft" name="DengLu">
+  <resources>
+    <atlas id="atlas0" size="2048,2048" file="atlas0.png"/>
+    <component id="inq91" name="Main" exported="true" size="1152,648"/>
+    <image id="inq93" name="login" size="2048,1152"/>
+    <image id="inq94" name="denglu2" size="414,314"/>
+  </resources>
+</packageDescription>

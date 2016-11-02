@@ -1,4 +1,4 @@
 #!/bin/sh
 git add --all
-git commit -m "添加登录界面lua逻辑" 
+git commit -m "新增fairgui" 
 git push origin master
