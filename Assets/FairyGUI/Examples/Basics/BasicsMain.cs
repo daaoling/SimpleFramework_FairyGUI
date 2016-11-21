@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using FairyGUI;
 using DG.Tweening;
+
 namespace FairyGUI
 {
 	public class BasicsMain : MonoBehaviour
@@ -338,3 +339,4 @@ namespace FairyGUI
 		}
 	}
 }
+

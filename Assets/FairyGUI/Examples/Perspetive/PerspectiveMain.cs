@@ -20,7 +20,7 @@ public class PerspectiveMain : MonoBehaviour
 
 		//GComponent g1 = GameObject.Find("UIPanel1").GetComponent<UIPanel>().ui;
 
-		GComponent g2 = GameObject.Find("UIPanel2").GetComponent<FairyGUI.UIPanel>().ui;
+		GComponent g2 = GameObject.Find("UIPanel2").GetComponent<UIPanel>().ui;
 		_list = g2.GetChild("mailList").asList;
 		_list.SetVirtual();
 		_list.itemRenderer = (int index, GObject obj) => { obj.text = index + " Mail title here"; };

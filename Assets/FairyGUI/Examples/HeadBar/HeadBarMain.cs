@@ -1,45 +1,36 @@
 ﻿using UnityEngine;
 using FairyGUI;
-
-namespace FairyGUI
+namespace FairGUI
 {
-	public class MailItem : GButton
+	public class HeadBarMain : MonoBehaviour
 	{
-		GTextField _timeText;
-		Controller _readController;
-		Controller _fetchController;
-		Transition _trans;
+		GComponent _mainView;
 		
-		public override void ConstructFromXML(FairyGUI.Utils.XML cxml)
+		void Start()
 		{
-			base.ConstructFromXML(cxml);
+			Application.targetFrameRate = 60;
 			
-			_timeText = this.GetChild("timeText").asTextField;
-			_readController = this.GetController("IsRead");
-			_fetchController = this.GetController("c1");
-			_trans = this.GetTransition("t0");
+			Stage.inst.onKeyDown.Add(OnKeyDown);
+			
+			Transform npc = GameObject.Find("npc1").transform;
+			UIPanel panel = npc.FindChild("HeadBar").GetComponent<UIPanel>();
+			panel.ui.GetChild("name").text = "Long [color=#FFFFFF]Long[/color][img]" + UIPackage.GetItemURL("HeadBar", "cool") + "[/img] Name";
+			panel.ui.GetChild("blood").asProgress.value = 75;
+			panel.ui.GetChild("sign").asLoader.url = UIPackage.GetItemURL("HeadBar", "task");
+			
+			npc = GameObject.Find("npc2").transform;
+			panel = npc.FindChild("HeadBar").GetComponent<UIPanel>();
+			panel.ui.GetChild("name").text = "Man2";
+			panel.ui.GetChild("blood").asProgress.value = 25;
+			panel.ui.GetChild("sign").asLoader.url = UIPackage.GetItemURL("HeadBar", "fighting");
 		}
 		
-		public void setTime(string value)
+		void OnKeyDown(EventContext context)
 		{
-			_timeText.text = value;
-		}
-		
-		public void setRead(bool value)
-		{
-			_readController.selectedIndex = value ? 1 : 0;
-		}
-		
-		public void setFetched(bool value)
-		{
-			_fetchController.selectedIndex = value ? 1 : 0;
-		}
-		
-		public void PlayEffect(float delay)
-		{
-			this.visible = false;
-			_trans.Play(1, delay, null);
+			if (context.inputEvent.keyCode == KeyCode.Escape)
+			{
+				Application.Quit();
+			}
 		}
 	}
 }
-
