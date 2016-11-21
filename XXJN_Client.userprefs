@@ -1,12 +1,13 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/NGUI/Scripts/UI/UIPanel.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Source/Generate/DelegateFactory.cs">
     <Files>
       <File FileName="Assets/Examples/Editor/WelcomeScreen.cs" Line="1" Column="1" />
-      <File FileName="Assets/FairyGUI/Examples/Basics/BasicsMain.cs" Line="6" Column="19" />
-      <File FileName="Assets/FairyGUI/Examples/Extension/MailItem.cs" Line="46" Column="1" />
-      <File FileName="Assets/FairyGUI/Examples/HeadBar/HeadBarMain.cs" Line="16" Column="61" />
-      <File FileName="Assets/NGUI/Scripts/UI/UIPanel.cs" Line="15" Column="1" />
+      <File FileName="Assets/FairyGUI/Examples/Basics/BasicsMain.cs" Line="1" Column="1" />
+      <File FileName="Assets/FairyGUI/Examples/Extension/MailItem.cs" Line="1" Column="1" />
+      <File FileName="Assets/FairyGUI/Examples/HeadBar/HeadBarMain.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Utility/WrapGrid.cs" Line="17" Column="32" />
+      <File FileName="Assets/Source/Generate/DelegateFactory.cs" Line="692" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
