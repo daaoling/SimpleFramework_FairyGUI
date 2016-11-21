@@ -8,7 +8,7 @@ public class testBehaviour : LuaBehaviour
 
     public VoidDelegate onClick;
 
-
+	public string name;
 
     [NoToLuaAttribute]
     void OnGUI()

@@ -10,6 +10,7 @@ public class testBehaviourWrap
 		L.RegFunction("__eq", op_Equality);
 		L.RegFunction("__tostring", ToLua.op_ToString);
 		L.RegVar("onClick", get_onClick, set_onClick);
+		L.RegVar("name", get_name, set_name);
 		L.RegFunction("VoidDelegate", testBehaviour_VoidDelegate);
 		L.EndClass();
 	}
@@ -52,6 +53,25 @@ public class testBehaviourWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_name(IntPtr L)
+	{
+		object o = null;
+
+		try
+		{
+			o = ToLua.ToObject(L, 1);
+			testBehaviour obj = (testBehaviour)o;
+			string ret = obj.name;
+			LuaDLL.lua_pushstring(L, ret);
+			return 1;
+		}
+		catch(Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e, o == null ? "attempt to index name on a nil value" : e.Message);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int set_onClick(IntPtr L)
 	{
 		object o = null;
@@ -79,6 +99,25 @@ public class testBehaviourWrap
 		catch(Exception e)
 		{
 			return LuaDLL.toluaL_exception(L, e, o == null ? "attempt to index onClick on a nil value" : e.Message);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_name(IntPtr L)
+	{
+		object o = null;
+
+		try
+		{
+			o = ToLua.ToObject(L, 1);
+			testBehaviour obj = (testBehaviour)o;
+			string arg0 = ToLua.CheckString(L, 2);
+			obj.name = arg0;
+			return 0;
+		}
+		catch(Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e, o == null ? "attempt to index name on a nil value" : e.Message);
 		}
 	}
 

@@ -1,44 +1,9 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Test/Test.cs">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scenes/testBehaviour.cs">
     <Files>
-      <File FileName="Assets/Scripts/Test/Test.cs" Line="9" Column="3" />
-      <File FileName="Assets/FairyGUI/Examples/Basics/BasicsMain.cs" Line="5" Column="1" />
-      <File FileName="Assets/Scripts/Framework/Core/Controller.cs" Line="8" Column="1" />
-      <File FileName="Assets/FairyGUI/Examples/Extension/MailItem.cs" Line="9" Column="11" />
-      <File FileName="Assets/FairyGUI/Examples/HeadBar/HeadBarMain.cs" Line="6" Column="1" />
-      <File FileName="Assets/FairyGUI/Examples/Perspetive/PerspectiveMain.cs" Line="37" Column="2" />
-      <File FileName="Assets/NGUI/Scripts/UI/UIPanel.cs" Line="15" Column="1" />
+      <File FileName="Assets/Scenes/testBehaviour.cs" Line="1" Column="1" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State expanded="True">
-          <Node name="Assembly-CSharp" expanded="True">
-            <Node name="FairyGUI" expanded="True">
-              <Node name="Examples" expanded="True">
-                <Node name="Basics" expanded="True" />
-                <Node name="Extension" expanded="True" />
-                <Node name="HeadBar" expanded="True" />
-                <Node name="Perspetive" expanded="True" />
-              </Node>
-            </Node>
-            <Node name="NGUI" expanded="True">
-              <Node name="Scripts" expanded="True">
-                <Node name="UI" expanded="True" />
-              </Node>
-            </Node>
-            <Node name="Scripts" expanded="True">
-              <Node name="Framework" expanded="True">
-                <Node name="Core" expanded="True" />
-              </Node>
-              <Node name="Test" expanded="True">
-                <Node name="Test.cs" selected="True" />
-              </Node>
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
