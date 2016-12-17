@@ -9,5 +9,6 @@ Protocal = {
 }
 
 Opcodes = {
+   register = 0,
    login = 1
 }

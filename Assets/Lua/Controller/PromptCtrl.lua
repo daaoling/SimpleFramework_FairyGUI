@@ -89,7 +89,7 @@ function PromptCtrl.Register(go)
 	log("OnClick---->>>"..go.name);
 	log("OnClick---->>>"..PromptPanel.roleName.value);
   log("OnClick---->>>"..PromptPanel.password.value);
---    this.TestItSelf();
+  this.TestItSelf();
 --    this.TestSendPblua();
 end
 

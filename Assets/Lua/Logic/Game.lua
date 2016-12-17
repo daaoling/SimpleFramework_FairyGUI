@@ -1,4 +1,4 @@
-require "3rd/pblua/login_pb"
+require "3rd/pblua/Login_pb"
 require "3rd/pbc/protobuf"
 
 local lpeg = require "lpeg"
@@ -35,11 +35,12 @@ function Game.InitViewPanels()
 	end
 end
 
+
 --初始化完成，发送链接服务器信息--
 function Game.OnInitOK()    
-    AppConst.SocketPort = 1000;
-    AppConst.SocketAddress = "127.0.0.1";
-    networkMgr:SendConnect();
+--    AppConst.SocketPort = 10000;
+--    AppConst.SocketAddress = "127.0.0.1";
+--    networkMgr:SendConnect();
 
     --注册LuaView--
 --    this.InitViewPanels();
@@ -60,13 +61,39 @@ function Game.OnInitOK()
 --    end
 
 
---    local timer = Timer.New(this.delay, 1, false, false)
---    timer:Start()
+    local timer = Timer.New(this.register, 1, false, false)
+    timer:Start()
 --    log('LuaFramework InitOK--->>>');
 --    Event.AddListener("signal",this.handler);
      
 --    log('LuaFramework InitOK--->>>');
 --    log(config.DemoByID[101].Name)
+end
+
+function Game.register()
+  log("register")
+  local register = Login_pb.RegisterRequest()
+  register.name = 'zjy';
+  register.password = '123';
+  local msg = register:SerializeToString();
+  
+  local buffer = ByteBuffer.New();
+  buffer:WriteInt(Opcodes.register);
+  buffer:WriteBuffer(msg);
+  networkMgr:SendMessage(buffer);
+end
+
+function Game.login()
+  log("test")
+  local login = Login_pb.LoginRequest()
+  login.name = 'zjy';
+  login.password = '123';
+  local msg = login:SerializeToString();
+  
+  local buffer = ByteBuffer.New();
+  buffer:WriteInt(Opcodes.login);
+  buffer:WriteBuffer(msg);
+  networkMgr:SendMessage(buffer); 
 end
 
 --测试协同--

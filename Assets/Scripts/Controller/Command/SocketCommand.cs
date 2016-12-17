@@ -11,7 +11,7 @@ public class SocketCommand : ControllerCommand {
         KeyValuePair<int, ByteBuffer> buffer = (KeyValuePair<int, ByteBuffer>)data;
         switch (buffer.Key) {
             default:
-                //Debug.Log(" Execute " + buffer.Key);
+                Debug.Log(" Execute " + buffer.Key);
                 Util.CallMethod("Network", "OnSocket", buffer.Key, buffer.Value);
                 buffer.Value.Close(); 
                 break;

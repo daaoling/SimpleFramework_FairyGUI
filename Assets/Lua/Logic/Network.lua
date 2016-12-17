@@ -30,7 +30,8 @@ end
 
 --Socket消息--
 function Network.OnSocket(key, data)
-    Event.Brocast(tostring(key), data);
+  log("OnSocket"..key)
+  Event.Brocast(tostring(key), data);
 end
 
 --当连接建立时--
@@ -76,11 +77,11 @@ function Network.OnMessage(buffer)
   local protocal = buffer:ReadInt();
   log('OnMessage-------->>>'..tostring(protocal));
 
-  local data = buffer:ReadBuffer();
+--  local data = buffer:ReadBuffer();
 
-  local msg = Login_pb.LoginResponse();
-  msg:ParseFromString(data);
-  log('TestLoginPblua: protocal:>'..protocal..' msg:>'..msg.id);
+--  local msg = Login_pb.LoginResponse();
+--  msg:ParseFromString(data);
+--  log('TestLoginPblua: protocal:>'..protocal..' msg:>'..msg.id);
 end
 
 --二进制登录--

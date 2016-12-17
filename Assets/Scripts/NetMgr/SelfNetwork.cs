@@ -137,6 +137,7 @@ public class SelfNetwork
                         {
                             byte[] bt = new byte[buffSize];
                             int leng = this.socket.Receive(bt, bt.Length, SocketFlags.None);
+							Debug.Log(" leng " + leng);
                             //Debug.Log(" this.socket.Receiv leng  " + leng);
                             //为什么TCP Socket.Receive不阻塞，直接返回0字节
                             //https://social.msdn.microsoft.com/Forums/vstudio/zh-CN/fcc03f1b-4329-4bc7-be60-09210629169c/tcp-socketreceive0
