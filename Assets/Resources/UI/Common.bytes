@@ -1,8 +1,6 @@
-package.xml|335|<packageDescription id="8sadnm40" name="Common">
+package.xml|174|<packageDescription id="8sadnm40" name="Common">
   <resources>
     <component id="u3kh0" name="login_btn" exported="true" size="100,20"/>
-    <component id="u3kh1" name="loading_progress" exported="true" size="50,10"/>
-    <component id="u3kh2" name="LoadingScene" exported="true" size="1152,648"/>
   </resources>
 </packageDescription>u3kh0.xml|1315|<component size="100,20" extention="Button">
   <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
@@ -27,23 +25,4 @@ package.xml|335|<packageDescription id="8sadnm40" name="Common">
     </loader>
   </displayList>
   <Button/>
-</component>u3kh1.xml|663|<component size="50,10" extention="ProgressBar">
-  <displayList>
-    <graph id="n1" name="n1" xy="0,0" size="50,10" type="rect" lineColor="#ffa0a0a0" fillColor="#fff0f0f0">
-      <relation target="" sidePair="width-width,height-height"/>
-    </graph>
-    <graph id="n2" name="bar" xy="0,3" size="50,4" type="rect" lineSize="0" fillColor="#ff3399ff">
-      <relation target="" sidePair="height-height"/>
-    </graph>
-    <text id="n3" name="title" xy="0,-3" size="50,16" fontSize="12" align="center" vAlign="middle" autoSize="none" text="">
-      <relation target="" sidePair="width-width,height-height"/>
-    </text>
-  </displayList>
-  <ProgressBar/>
-</component>u3kh2.xml|205|<component size="1152,648">
-  <displayList>
-    <component id="n0" name="n0" src="u3kh1" xy="237,522" size="772,47">
-      <ProgressBar value="60" max="100"/>
-    </component>
-  </displayList>
 </component>

@@ -38,6 +38,7 @@ end
 
 --初始化完成，发送链接服务器信息--
 function Game.OnInitOK()    
+  
 --    AppConst.SocketPort = 10000;
 --    AppConst.SocketAddress = "127.0.0.1";
 --    networkMgr:SendConnect();
@@ -46,7 +47,7 @@ function Game.OnInitOK()
 --    this.InitViewPanels();
 
     --测试第三方库功能--
---    this.test_class_func();
+--    this.test_clas  s_func();
 --    this.test_pblua_func();
 --    this.test_cjson_func();
 --    this.test_pbc_func();

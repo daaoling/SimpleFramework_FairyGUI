@@ -1,16 +1,3 @@
-package.xml|294|<packageDescription id="87wd36x4" name="Main">
-  <resources>
-    <atlas id="atlas_u3kh1" size="2048,1024" file="atlas_u3kh1.png"/>
-    <component id="u3kh2" name="Main" exported="true" size="1152,648"/>
-    <image id="u3kh1" name="beijing" size="1152,652"/>
-  </resources>
-</packageDescription>u3kh2.xml|335|<component size="1152,648">
-  <displayList>
-    <image id="n0" name="n0" src="u3kh1" xy="-2,0">
-      <relation target="" sidePair="width-width,height-height"/>
-    </image>
-    <component id="n2" name="n2" src="u3kh0" pkg="8sadnm40" xy="254,530" size="183,63">
-      <Button title="英雄"/>
-    </component>
-  </displayList>
-</component>
+package.xml|83|<packageDescription id="87wd36x4" name="Main">
+  <resources/>
+</packageDescription>

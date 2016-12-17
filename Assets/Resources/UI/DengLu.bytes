@@ -1,10 +1,11 @@
-inq91.xml|661|<component size="1152,648">
+inq91.xml|838|<component size="1152,648">
   <displayList>
     <image id="n0" name="n0" src="inq93" xy="0,0" size="1152,648">
       <relation target="" sidePair="width-width,height-height"/>
     </image>
     <image id="n3" name="n3" src="inq94" xy="387,180" size="375,284"/>
-    <text id="n2" name="password" xy="519,318" size="170,30" input="true" prompt="请输入密码" fontSize="12" autoSize="none" text=""/>
+    <text id="n2" name="username" xy="517,267" size="170,30" input="true" prompt="请输入帐号" maxLength="100" fontSize="12" autoSize="none" text="username"/>
+    <text id="n7" name="password" xy="518,317" size="170,30" input="true" prompt="请输入密码" maxLength="100" fontSize="12" autoSize="none" text="password"/>
     <component id="n5" name="n5" src="u3kh9" xy="428,374" size="114,38">
       <Button title="login"/>
     </component>
