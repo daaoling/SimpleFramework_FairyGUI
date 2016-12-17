@@ -19,25 +19,28 @@ public class fairygui_test : MonoBehaviour
 		GRoot.inst.SetContentScaleFactor(1152, 648);
 //		Stage.inst.onKeyDown.Add(OnKeyDown);
 		
-		UIPackage.AddPackage("UI/DengLu");
+		
+
+        //EventContext
 
 		UIConfig.defaultFont = "afont";
 
-		_mainView = UIPackage.CreateObject("DengLu", "Main").asCom;
-		_mainView.fairyBatching = true;
-		_mainView.SetSize(GRoot.inst.width, GRoot.inst.height);
-		_mainView.AddRelation(GRoot.inst, RelationType.Size);
-		GRoot.inst.AddChild(_mainView);
 
-//		Debug.Log
+        //DemoStart();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-//		if(Stage.inst.focus!=null)
-//		{
-//			Debug.Log(Stage.inst.focus.name);	
-//		}
-//		Debug.Log(Stage.isTouchOnUI);
-	}
+
+    void DemoStart()
+    {
+        UIPackage.AddPackage("UI/DengLu");
+        _mainView = UIPackage.CreateObject("DengLu", "Main").asCom;
+        _mainView.fairyBatching = true;
+        _mainView.SetSize(GRoot.inst.width, GRoot.inst.height);
+        _mainView.AddRelation(GRoot.inst, RelationType.Size);
+        GRoot.inst.AddChild(_mainView);
+    }
+
+    void DemoStart1()
+    {
+ 
+    }
 }

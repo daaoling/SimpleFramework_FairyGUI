@@ -42,6 +42,16 @@ public static class DelegateFactory
 		dict.Add(typeof(UIEventListener.ObjectDelegate), UIEventListener_ObjectDelegate);
 		dict.Add(typeof(UIEventListener.KeyCodeDelegate), UIEventListener_KeyCodeDelegate);
 		dict.Add(typeof(testBehaviour.VoidDelegate), testBehaviour_VoidDelegate);
+		dict.Add(typeof(FairyGUI.EventCallback0), FairyGUI_EventCallback0);
+		dict.Add(typeof(FairyGUI.EventCallback1), FairyGUI_EventCallback1);
+		dict.Add(typeof(FairyGUI.ListItemRenderer), FairyGUI_ListItemRenderer);
+		dict.Add(typeof(FairyGUI.ListItemProvider), FairyGUI_ListItemProvider);
+		dict.Add(typeof(FairyGUI.PlayCompleteCallback), FairyGUI_PlayCompleteCallback);
+		dict.Add(typeof(FairyGUI.TransitionHook), FairyGUI_TransitionHook);
+		dict.Add(typeof(FairyGUI.UIPackage.LoadResource), FairyGUI_UIPackage_LoadResource);
+		dict.Add(typeof(FairyGUI.UIPackage.CreateObjectCallback), FairyGUI_UIPackage_CreateObjectCallback);
+		dict.Add(typeof(FairyGUI.GObjectPool.InitCallbackDelegate), FairyGUI_GObjectPool_InitCallbackDelegate);
+		dict.Add(typeof(FairyGUI.TimerCallback), FairyGUI_TimerCallback);
 	}
 
     [NoToLuaAttribute]
@@ -1357,6 +1367,478 @@ public static class DelegateFactory
 		{
 			testBehaviour_VoidDelegate_Event target = new testBehaviour_VoidDelegate_Event(func, self);
 			testBehaviour.VoidDelegate d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	class FairyGUI_EventCallback0_Event : LuaDelegate
+	{
+		public FairyGUI_EventCallback0_Event(LuaFunction func) : base(func) { }
+		public FairyGUI_EventCallback0_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call()
+		{
+			func.Call();
+		}
+
+		public void CallWithSelf()
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public static Delegate FairyGUI_EventCallback0(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			FairyGUI.EventCallback0 fn = delegate() { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			FairyGUI_EventCallback0_Event target = new FairyGUI_EventCallback0_Event(func);
+			FairyGUI.EventCallback0 d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			FairyGUI_EventCallback0_Event target = new FairyGUI_EventCallback0_Event(func, self);
+			FairyGUI.EventCallback0 d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	class FairyGUI_EventCallback1_Event : LuaDelegate
+	{
+		public FairyGUI_EventCallback1_Event(LuaFunction func) : base(func) { }
+		public FairyGUI_EventCallback1_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(FairyGUI.EventContext param0)
+		{
+			func.BeginPCall();
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(FairyGUI.EventContext param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public static Delegate FairyGUI_EventCallback1(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			FairyGUI.EventCallback1 fn = delegate(FairyGUI.EventContext param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			FairyGUI_EventCallback1_Event target = new FairyGUI_EventCallback1_Event(func);
+			FairyGUI.EventCallback1 d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			FairyGUI_EventCallback1_Event target = new FairyGUI_EventCallback1_Event(func, self);
+			FairyGUI.EventCallback1 d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	class FairyGUI_ListItemRenderer_Event : LuaDelegate
+	{
+		public FairyGUI_ListItemRenderer_Event(LuaFunction func) : base(func) { }
+		public FairyGUI_ListItemRenderer_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(int param0, FairyGUI.GObject param1)
+		{
+			func.BeginPCall();
+			func.Push(param0);
+			func.PushObject(param1);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(int param0, FairyGUI.GObject param1)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.Push(param0);
+			func.PushObject(param1);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public static Delegate FairyGUI_ListItemRenderer(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			FairyGUI.ListItemRenderer fn = delegate(int param0, FairyGUI.GObject param1) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			FairyGUI_ListItemRenderer_Event target = new FairyGUI_ListItemRenderer_Event(func);
+			FairyGUI.ListItemRenderer d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			FairyGUI_ListItemRenderer_Event target = new FairyGUI_ListItemRenderer_Event(func, self);
+			FairyGUI.ListItemRenderer d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	class FairyGUI_ListItemProvider_Event : LuaDelegate
+	{
+		public FairyGUI_ListItemProvider_Event(LuaFunction func) : base(func) { }
+		public FairyGUI_ListItemProvider_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public string Call(int param0)
+		{
+			func.BeginPCall();
+			func.Push(param0);
+			func.PCall();
+			string ret = func.CheckString();
+			func.EndPCall();
+			return ret;
+		}
+
+		public string CallWithSelf(int param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.Push(param0);
+			func.PCall();
+			string ret = func.CheckString();
+			func.EndPCall();
+			return ret;
+		}
+	}
+
+	public static Delegate FairyGUI_ListItemProvider(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			FairyGUI.ListItemProvider fn = delegate(int param0) { return null; };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			FairyGUI_ListItemProvider_Event target = new FairyGUI_ListItemProvider_Event(func);
+			FairyGUI.ListItemProvider d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			FairyGUI_ListItemProvider_Event target = new FairyGUI_ListItemProvider_Event(func, self);
+			FairyGUI.ListItemProvider d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	class FairyGUI_PlayCompleteCallback_Event : LuaDelegate
+	{
+		public FairyGUI_PlayCompleteCallback_Event(LuaFunction func) : base(func) { }
+		public FairyGUI_PlayCompleteCallback_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call()
+		{
+			func.Call();
+		}
+
+		public void CallWithSelf()
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public static Delegate FairyGUI_PlayCompleteCallback(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			FairyGUI.PlayCompleteCallback fn = delegate() { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			FairyGUI_PlayCompleteCallback_Event target = new FairyGUI_PlayCompleteCallback_Event(func);
+			FairyGUI.PlayCompleteCallback d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			FairyGUI_PlayCompleteCallback_Event target = new FairyGUI_PlayCompleteCallback_Event(func, self);
+			FairyGUI.PlayCompleteCallback d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	class FairyGUI_TransitionHook_Event : LuaDelegate
+	{
+		public FairyGUI_TransitionHook_Event(LuaFunction func) : base(func) { }
+		public FairyGUI_TransitionHook_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call()
+		{
+			func.Call();
+		}
+
+		public void CallWithSelf()
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public static Delegate FairyGUI_TransitionHook(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			FairyGUI.TransitionHook fn = delegate() { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			FairyGUI_TransitionHook_Event target = new FairyGUI_TransitionHook_Event(func);
+			FairyGUI.TransitionHook d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			FairyGUI_TransitionHook_Event target = new FairyGUI_TransitionHook_Event(func, self);
+			FairyGUI.TransitionHook d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	class FairyGUI_UIPackage_LoadResource_Event : LuaDelegate
+	{
+		public FairyGUI_UIPackage_LoadResource_Event(LuaFunction func) : base(func) { }
+		public FairyGUI_UIPackage_LoadResource_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public UnityEngine.Object Call(string param0, string param1, System.Type param2)
+		{
+			func.BeginPCall();
+			func.Push(param0);
+			func.Push(param1);
+			func.Push(param2);
+			func.PCall();
+			UnityEngine.Object ret = (UnityEngine.Object)func.CheckObject(typeof(UnityEngine.Object));
+			func.EndPCall();
+			return ret;
+		}
+
+		public UnityEngine.Object CallWithSelf(string param0, string param1, System.Type param2)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.Push(param0);
+			func.Push(param1);
+			func.Push(param2);
+			func.PCall();
+			UnityEngine.Object ret = (UnityEngine.Object)func.CheckObject(typeof(UnityEngine.Object));
+			func.EndPCall();
+			return ret;
+		}
+	}
+
+	public static Delegate FairyGUI_UIPackage_LoadResource(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			FairyGUI.UIPackage.LoadResource fn = delegate(string param0, string param1, System.Type param2) { return null; };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			FairyGUI_UIPackage_LoadResource_Event target = new FairyGUI_UIPackage_LoadResource_Event(func);
+			FairyGUI.UIPackage.LoadResource d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			FairyGUI_UIPackage_LoadResource_Event target = new FairyGUI_UIPackage_LoadResource_Event(func, self);
+			FairyGUI.UIPackage.LoadResource d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	class FairyGUI_UIPackage_CreateObjectCallback_Event : LuaDelegate
+	{
+		public FairyGUI_UIPackage_CreateObjectCallback_Event(LuaFunction func) : base(func) { }
+		public FairyGUI_UIPackage_CreateObjectCallback_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(FairyGUI.GObject param0)
+		{
+			func.BeginPCall();
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(FairyGUI.GObject param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public static Delegate FairyGUI_UIPackage_CreateObjectCallback(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			FairyGUI.UIPackage.CreateObjectCallback fn = delegate(FairyGUI.GObject param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			FairyGUI_UIPackage_CreateObjectCallback_Event target = new FairyGUI_UIPackage_CreateObjectCallback_Event(func);
+			FairyGUI.UIPackage.CreateObjectCallback d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			FairyGUI_UIPackage_CreateObjectCallback_Event target = new FairyGUI_UIPackage_CreateObjectCallback_Event(func, self);
+			FairyGUI.UIPackage.CreateObjectCallback d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	class FairyGUI_GObjectPool_InitCallbackDelegate_Event : LuaDelegate
+	{
+		public FairyGUI_GObjectPool_InitCallbackDelegate_Event(LuaFunction func) : base(func) { }
+		public FairyGUI_GObjectPool_InitCallbackDelegate_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(FairyGUI.GObject param0)
+		{
+			func.BeginPCall();
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(FairyGUI.GObject param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.PushObject(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public static Delegate FairyGUI_GObjectPool_InitCallbackDelegate(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			FairyGUI.GObjectPool.InitCallbackDelegate fn = delegate(FairyGUI.GObject param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			FairyGUI_GObjectPool_InitCallbackDelegate_Event target = new FairyGUI_GObjectPool_InitCallbackDelegate_Event(func);
+			FairyGUI.GObjectPool.InitCallbackDelegate d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			FairyGUI_GObjectPool_InitCallbackDelegate_Event target = new FairyGUI_GObjectPool_InitCallbackDelegate_Event(func, self);
+			FairyGUI.GObjectPool.InitCallbackDelegate d = target.CallWithSelf;
+			target.method = d.Method;
+			return d;
+		}
+	}
+
+	class FairyGUI_TimerCallback_Event : LuaDelegate
+	{
+		public FairyGUI_TimerCallback_Event(LuaFunction func) : base(func) { }
+		public FairyGUI_TimerCallback_Event(LuaFunction func, LuaTable self) : base(func, self) { }
+
+		public void Call(object param0)
+		{
+			func.BeginPCall();
+			func.Push(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+
+		public void CallWithSelf(object param0)
+		{
+			func.BeginPCall();
+			func.Push(self);
+			func.Push(param0);
+			func.PCall();
+			func.EndPCall();
+		}
+	}
+
+	public static Delegate FairyGUI_TimerCallback(LuaFunction func, LuaTable self, bool flag)
+	{
+		if (func == null)
+		{
+			FairyGUI.TimerCallback fn = delegate(object param0) { };
+			return fn;
+		}
+
+		if(!flag)
+		{
+			FairyGUI_TimerCallback_Event target = new FairyGUI_TimerCallback_Event(func);
+			FairyGUI.TimerCallback d = target.Call;
+			target.method = d.Method;
+			return d;
+		}
+		else
+		{
+			FairyGUI_TimerCallback_Event target = new FairyGUI_TimerCallback_Event(func, self);
+			FairyGUI.TimerCallback d = target.CallWithSelf;
 			target.method = d.Method;
 			return d;
 		}

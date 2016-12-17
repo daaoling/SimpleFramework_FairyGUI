@@ -4,7 +4,7 @@ using System.Collections;
 namespace LuaFramework {
     public class ManagerName {
         public const string Lua = "LuaScriptMgr";
-        public const string Game = "GameManager";
+        public const string Game = "GameManagerV2";
         public const string Timer = "TimeManager";
         public const string Sound = "SoundManager";
         public const string Panel = "PanelManager";

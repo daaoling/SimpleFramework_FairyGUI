@@ -23,23 +23,32 @@ end
 
 function PromptCtrl.Awake()
 	logWarn("PromptCtrl.Awake--->>");
-	panelMgr:CreatePanel("PromptPanel", this.OnCreate);
+--	panelMgr:CreatePanel("PromptPanel", this.OnCreate);
+  
+  FairyGUI.UIPackage.AddPackage("UI/DengLu")
+  
+  local _mainView = FairyGUI.UIPackage.CreateObject('DengLu', 'Main')
+  _mainView:SetSize(FairyGUI.GRoot.inst.width, FairyGUI.GRoot.inst.height)
+  size = FairyGUI.RelationType.Size
+  _mainView:AddRelation(FairyGUI.GRoot.inst, size)
+  FairyGUI.GRoot.inst:AddChild(_mainView)
+  
 end
 
 --启动事件--
 function PromptCtrl.OnCreate(obj)
-	gameObject = obj;
-	transform = obj.transform;
+--	gameObject = obj;
+--	transform = obj.transform;
 
-	panel = transform:GetComponent('UIPanel');
-	prompt = transform:GetComponent('LuaBehaviour');
-	logWarn("Start lua--->>"..gameObject.name);
+--	panel = transform:GetComponent('UIPanel');
+--	prompt = transform:GetComponent('LuaBehaviour');
+--	logWarn("Start lua--->>"..gameObject.name);
 
 --	this.InitPanel();	--初始化面板--
 ----  prompt:AddClick(PromptPanel.btnOpen, this.OnClick);
 --  listener = UIEventListener.Get(PromptPanel.btnOpen)
-  AddClick(PromptPanel.btnRegister, this.Register)
-  AddClick(PromptPanel.btnLogin, this.Login)
+--  AddClick(PromptPanel.btnRegister, this.Register)
+--  AddClick(PromptPanel.btnLogin, this.Login)
 --  local timer = Timer.New(this.delay,5,false,true)
 --  timer:Start()
 end
