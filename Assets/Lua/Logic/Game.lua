@@ -44,7 +44,7 @@ function Game.OnInitOK()
 --    networkMgr:SendConnect();
 
     --注册LuaView--
-    this.InitViewPanels();
+--    this.InitViewPanels();
 
     --测试第三方库功能--
 --    this.test_clas  s_func();
@@ -56,15 +56,15 @@ function Game.OnInitOK()
 --    coroutine.start(this.test_coroutine);
 
     CtrlManager.Init();
---    local ctrl = CtrlManager.GetCtrl(CtrlNames.Prompt);
---    if ctrl ~= nil and AppConst.ExampleMode == 1 then
---        ctrl:Awake();
---    end
+    local ctrl = CtrlManager.GetCtrl(CtrlNames.Prompt);
+    if ctrl ~= nil and AppConst.ExampleMode == 1 then
+        ctrl:Awake();
+    end
 
 
 --    local timer = Timer.New(this.register, 1, false, false)
 --    timer:Start()
-    log('Game.OnInitOK--->>>');
+      log('Game.OnInitOK--->>>');
 --    Event.AddListener("signal",this.handler);
      
 --    log('LuaFramework InitOK--->>>');

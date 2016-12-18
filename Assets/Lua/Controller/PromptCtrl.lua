@@ -23,15 +23,13 @@ end
 
 function PromptCtrl.Awake()
 	logWarn("PromptCtrl.Awake--->>");
---	panelMgr:CreatePanel("PromptPanel", this.OnCreate);
   
-  FairyGUI.UIPackage.AddPackage("UI/DengLu")
-  
-  local _mainView = FairyGUI.UIPackage.CreateObject('DengLu', 'Main')
-  _mainView:SetSize(FairyGUI.GRoot.inst.width, FairyGUI.GRoot.inst.height)
-  size = FairyGUI.RelationType.Size
-  _mainView:AddRelation(FairyGUI.GRoot.inst, size)
-  FairyGUI.GRoot.inst:AddChild(_mainView)
+  FairyGUI.GRoot.inst:SetContentScaleFactor(1152,648);
+  FairyGUI.UIPackage.AddPackage("UI/DengLu");
+  mainView = FairyGUI.UIPackage.CreateObject("DengLu","Main");
+  mainView:SetSize(FairyGUI.GRoot.inst.width, FairyGUI.GRoot.inst.height);
+  mainView:AddRelation(FairyGUI.GRoot.inst, FairyGUI.RelationType.Size);
+  FairyGUI.GRoot.inst:AddChild(mainView);
   
 end
 

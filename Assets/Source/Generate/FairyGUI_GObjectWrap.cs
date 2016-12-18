@@ -406,6 +406,7 @@ public class FairyGUI_GObjectWrap
 		try
 		{
 			int count = LuaDLL.lua_gettop(L);
+
 			if (count == 3 && TypeChecker.CheckTypes(L, 1, typeof(FairyGUI.GObject), typeof(FairyGUI.GObject), typeof(FairyGUI.RelationType)))
 			{
 				FairyGUI.GObject obj = (FairyGUI.GObject)ToLua.ToObject(L, 1);
