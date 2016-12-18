@@ -9,7 +9,7 @@ package.xml|284|<packageDescription id="87wd36x4" name="Main">
     <image id="n0" name="n0" src="u3kh1" xy="-2,0">
       <relation target="" sidePair="width-width,height-height"/>
     </image>
-    <component id="n2" name="n2" src="u3kh0" pkg="8sadnm40" xy="254,530" size="183,63">
+    <component id="n3" name="n3" src="u3kh0" pkg="8sadnm40" xy="171,532" size="131,54">
       <Button title="英雄"/>
     </component>
   </displayList>

@@ -23,7 +23,7 @@ public class fairygui_test : MonoBehaviour
 
         //EventContext
 
-		UIConfig.defaultFont = "afont";
+		
 
 
         DemoStart();
@@ -32,12 +32,23 @@ public class fairygui_test : MonoBehaviour
 
     void DemoStart()
     {
+        UIConfig.defaultFont = "afont";
+
 		GRoot.inst.SetContentScaleFactor(1152,648);
 
-		UIPackage.AddPackage("UI/DengLu");
-	    GComponent mainView = UIPackage.CreateObject("DengLu","Main").asCom;
-		mainView.SetSize(GRoot.inst.width, GRoot.inst.height);
-		mainView.AddRelation(GRoot.inst, RelationType.Size);
-		GRoot.inst.AddChild(mainView);
+        UIPackage.AddPackage("UI/Common");
+        UIPackage.AddPackage("UI/DengLu");
+        UIPackage.AddPackage("UI/Main");
+
+        UIPackage.AddPackage("UI/DengLu");
+        GComponent mainView = UIPackage.CreateObject("DengLu", "Main").asCom;
+        mainView.SetSize(GRoot.inst.width, GRoot.inst.height);
+        mainView.AddRelation(GRoot.inst, RelationType.Size);
+        GRoot.inst.AddChild(mainView);
+
+
+        //GComponent n9 = mainView.GetChild("n9").asCom;
+        //GComponent mainView2 = UIPackage.CreateObject("Main", "Main").asCom;
+        //n9.AddChild(mainView2);
     }
 }
