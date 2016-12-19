@@ -83,15 +83,8 @@ public class UIPage
     
     
     ///真正关闭
-    public virtual void OnDidDisappear() 
-    {
-        if (mResident) {
-            mainCom.visible = false;
-        }
-        else {
-            RealseWidget();
-            Destroy();
-        }
+    public virtual void OnDidDisappear() {
+       
     }
 
     
@@ -130,7 +123,7 @@ public class UIPage
             OnAddListener();
 
             if (animationCallBack != null) {
-                AnimationShow(OnDidAppear);
+                animationCallBack(OnDidAppear);
             }
             else {
                 OnDidAppear();
@@ -139,10 +132,6 @@ public class UIPage
         else {
             Debug.LogError("this ?");
         }
-    }
-    void AnimationShow(Callback callBack)
-    {
-        animationCallBack(callBack);
     }
 
     public void Hide(bool force = false)
@@ -154,19 +143,28 @@ public class UIPage
             if (force) animationDisappearCallBack = null;
 
             if (animationDisappearCallBack != null) {
-                AnimationHide(OnDidDisappear);
+                animationCallBack(DisAppear);
             }
             else {
-                OnDidDisappear();
+                DisAppear();
             }
         }
         else {
             Debug.LogError("this?!");
         }
     }
-    void AnimationHide(Callback callBack)
+
+    void DisAppear() 
     {
-        animationCallBack(callBack);
+        OnDidDisappear();
+        
+        if (mResident) {
+            mainCom.visible = false;
+        }
+        else {
+            RealseWidget();
+            Destroy();
+        }
     }
 
 

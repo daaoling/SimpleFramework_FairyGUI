@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class BaseScene : MonoBehaviour
+public class BaseScene
 {
     public SceneId sceneId;
     public Dictionary<PanelId, UIPage> panels;

@@ -36,6 +36,7 @@ public class fairygui_test : MonoBehaviour
 
     void DemoStart()
     {
+        
         UIConfig.defaultFont = "afont";
 
 		GRoot.inst.SetContentScaleFactor(1152,648);
