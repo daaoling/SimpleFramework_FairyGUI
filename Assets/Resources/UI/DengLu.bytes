@@ -1,10 +1,13 @@
-inq91.xml|361|<component size="1152,648">
+inq91.xml|502|<component size="1152,648">
   <displayList>
     <image id="n0" name="n0" src="inq93" xy="0,0" size="1152,648">
       <relation target="" sidePair="width-width,height-height"/>
     </image>
     <component id="n8" name="n8" src="nwu8b" xy="392,228">
       <relation target="" sidePair="center-center,middle-middle"/>
+    </component>
+    <component id="n9" name="n9" src="rh78c" xy="734,230">
+      <relation target="" sidePair="width-width,height-height"/>
     </component>
   </displayList>
 </component>nwu8b.xml|670|<component size="375,284">
@@ -19,17 +22,20 @@ inq91.xml|361|<component size="1152,648">
       <Button title="register"/>
     </component>
   </displayList>
-</component>package.xml|528|<packageDescription id="sv6e6mft" name="DengLu">
+</component>package.xml|589|<packageDescription id="sv6e6mft" name="DengLu">
   <resources>
     <atlas id="atlas0" size="512,512" file="atlas0.png"/>
     <atlas id="atlas_inq93" size="2048,2048" file="atlas_inq93.png"/>
     <component id="inq91" name="Main" exported="true" size="1152,648"/>
     <component id="nwu8b" name="DengLuKuang" size="375,284"/>
+    <component id="rh78c" name="Component1" size="400,400"/>
     <component id="u3kh9" name="login_btn" size="100,20"/>
     <image id="inq93" name="login" size="2048,1152"/>
     <image id="inq94" name="denglu2" size="414,314"/>
   </resources>
-</packageDescription>u3kh9.xml|1315|<component size="100,20" extention="Button">
+</packageDescription>rh78c.xml|74|<component size="400,400" overflow="hidden">
+  <displayList/>
+</component>u3kh9.xml|1315|<component size="100,20" extention="Button">
   <controller name="button" pages="0,up,1,down,2,over,3,selectedOver" selected="0"/>
   <displayList>
     <graph id="n1" name="n1" xy="0,0" size="100,20" touchable="false" type="rect" lineSize="0" fillColor="#fff0f0f0">
