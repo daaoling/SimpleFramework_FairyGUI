@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -43,7 +43,7 @@ public class BaseScene
 
             bPanel.Hide(true);
             if (bPanel.mResident)
-                bPanel.DelayDestroy();
+                bPanel.Destroy();
 
             bPanel.Release();
         }
@@ -62,7 +62,7 @@ public class BaseScene
         {
             if (pWindow.isVisable)
             {
-                pWindow.OnUpdate();
+                pWindow.Update();
             }
         }
     }

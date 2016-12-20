@@ -37,149 +37,137 @@ public class UIPage
     public GComponent mainCom;
     public bool isVisable { get { return mainCom.visible; } }///当前是否可见标志位
    
+	//预加载
+	public void PreLoad()
+	{
+		if (mainCom == null)
+		{
+			Create();
+		}
+	}
+
+	public virtual void Init() { }
+	
+	/// <summary>
+	/// 这里要注意优先吧UIPackage加到包里面
+	/// </summary>
+	/// <returns></returns>
+	public void Create()
+	{
+		//create mainCom by lua
+
+		//        mainCom = UIPackage.CreateObject(pkgPath, mainPath).asCom;
+		//        mainCom.SetSize(GRoot.inst.width, GRoot.inst.height);
+		//        mainCom.AddRelation(GRoot.inst, RelationType.Size);
+		//        GRoot.inst.AddChild(mainCom);
+
+		this.mainCom.visible = false;
+
+		OnInitWidget();
+	}
+
+	public void Show()
+	{
+		if (mainCom == null)
+		{
+			Create();
+		}
+		
+		if (mainCom != null && !this.isVisable) {
+
+			OnWillApprear();
+			OnAddListener();
+			
+			if (animationCallBack != null) {
+				animationCallBack(Appear);
+			}
+			else {
+				Appear();
+			}
+		}
+		else {
+			Debug.LogError("this ?");
+		}
+	}
+
+	void Appear()
+	{
+		mainCom.visible = true;
+		OnDidAppear();
+	}
+
+	
+	public void Hide(bool force = false)
+	{
+		if (this.mainCom != null && this.isVisable) {
+			OnRemoveListener();
+			OnWillDisappear();
+			
+			if (force) animationDisappearCallBack = null;
+			
+			if (animationDisappearCallBack != null) {
+				animationCallBack(DisAppear);
+			}
+			else {
+				DisAppear();
+			}
+		}
+		else {
+			Debug.LogError("this?!");
+		}
+	}
+
+
+	void DisAppear() 
+	{
+		OnDidDisappear();
+		
+		if (mResident) {
+			mainCom.visible = false;
+		}
+		else {
+			Destroy();
+		}
+	}
+
+	//销毁窗体
+	public void Destroy()
+	{
+		OnRealseWidget();
+
+		this.mainCom.Dispose();
+		this.mainCom = null;
+	}
+
+	//类对象释放
+	public virtual void Release() { }
+	
+	public virtual void Update() { }
     
-    /// <summary>
-    /// 这里要注意优先吧UIPackage加到包里面
-    /// </summary>
-    /// <returns></returns>
-    public bool Create()
-    {
-        mainCom = UIPackage.CreateObject(pkgPath, mainPath).asCom;
-        mainCom.SetSize(GRoot.inst.width, GRoot.inst.height);
-        mainCom.AddRelation(GRoot.inst, RelationType.Size);
-        GRoot.inst.AddChild(mainCom);
 
-        return true;
-    }
-
-   
-
-   
-    
-
-    //////////////////////////////////////
-
-    public virtual void Init() { }
+    ////////// event callback /////
 
     //窗口控制初始化 这个相当于显示对象第一次生成
-    public virtual void InitWidget() { }
+    public virtual void OnInitWidget() { }
 
     //游戏事件注册
     protected virtual void OnAddListener() { }
     //将要显示
-    public virtual void WillApprear() { }
+    public virtual void OnWillApprear() { }
     
-   
     //真正显示
-    public virtual void OnDidAppear() 
-    {
-
-    }
+    public virtual void OnDidAppear() {  }
 
     //游戏事件注销
     protected virtual void OnRemoveListener() { }
     //将要隐藏
-    public virtual void WillDisappear() { }
+    public virtual void OnWillDisappear() { }
     
     
     ///真正关闭
-    public virtual void OnDidDisappear() {
-       
-    }
+    public virtual void OnDidDisappear() { }
 
     
     //窗口释放
-    public virtual void RealseWidget() { }
-
-    //类对象释放
-    public virtual void Release() { }
-
-    public virtual void OnUpdate() { }
-
-    //预加载
-    public void PreLoad()
-    {
-        if (mainCom == null)
-        {
-            if (Create())
-            {
-                InitWidget();
-            }
-        }
-    }
-
-    public void Show()
-    {
-        if (mainCom == null)
-        {
-            if (Create())
-            {
-                InitWidget();
-            }
-        }
-
-        if (mainCom != null && !this.isVisable) {
-            WillApprear();
-            OnAddListener();
-
-            if (animationCallBack != null) {
-                animationCallBack(OnDidAppear);
-            }
-            else {
-                OnDidAppear();
-            }
-        }
-        else {
-            Debug.LogError("this ?");
-        }
-    }
-
-    public void Hide(bool force = false)
-    {
-        if (this.mainCom != null && this.isVisable) {
-            OnRemoveListener();
-            WillDisappear();
-
-            if (force) animationDisappearCallBack = null;
-
-            if (animationDisappearCallBack != null) {
-                animationCallBack(DisAppear);
-            }
-            else {
-                DisAppear();
-            }
-        }
-        else {
-            Debug.LogError("this?!");
-        }
-    }
-
-    void DisAppear() 
-    {
-        OnDidDisappear();
-        
-        if (mResident) {
-            mainCom.visible = false;
-        }
-        else {
-            RealseWidget();
-            Destroy();
-        }
-    }
-
-
-    //延时删除
-    public void DelayDestroy()
-    {
-        RealseWidget();
-        Destroy();
-    }
-    
-
-    //销毁窗体
-    protected void Destroy()
-    {
-        this.mainCom.Dispose();
-        this.mainCom = null;
-    }
+    public virtual void OnRealseWidget() { }
 }
