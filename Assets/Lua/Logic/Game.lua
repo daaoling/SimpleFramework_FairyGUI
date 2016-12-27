@@ -64,9 +64,9 @@ function Game.OnInitOK()
 
 --    local timer = Timer.New(this.register, 1, false, false)
 --    timer:Start()
-      log('Game.OnInitOK--->>>');
+    log('Game.OnInitOK--->>>');
 --    Event.AddListener("signal",this.handler);
-     
+
 --    log('LuaFramework InitOK--->>>');
 --    log(config.DemoByID[101].Name)
 end

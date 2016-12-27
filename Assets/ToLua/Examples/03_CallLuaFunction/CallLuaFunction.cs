@@ -1,4 +1,4 @@
-﻿//#define TEST_GC
+﻿#define TEST_GC
 using UnityEngine;
 using System.Collections;
 using LuaInterface;
@@ -96,8 +96,8 @@ public class CallLuaFunction : MonoBehaviour
 #if TEST_GC
     void Update () 
     {
-        func.Call(123456);
-        //CallFunc();        
+        //func.Call(123456);
+        CallFunc();        
 	}
 #endif
 }
