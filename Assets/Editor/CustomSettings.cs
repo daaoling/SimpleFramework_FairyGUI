@@ -162,6 +162,7 @@ public static class CustomSettings
         _GT(typeof(ThreadManager)),
         _GT(typeof(NetworkManagerV2)),
         _GT(typeof(ResourceManager)),
+        _GT(typeof(LoadMgr)),
 		_GT(typeof(UIEventListener)),
         _GT(typeof(testBehaviour)),
 

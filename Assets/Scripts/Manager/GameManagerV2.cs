@@ -25,11 +25,11 @@ namespace LuaFramework
         public void OnResourceInited()
         {
             LuaManager.InitStart();
-            LuaManager.DoFile("Logic/Game");            //加载游戏
+            //LuaManager.DoFile("Logic/Game");            //加载游戏
             //LuaManager.DoFile("Logic/Network");         //加载网络
             //NetManager.OnInit();
 
-            Util.CallMethod("Game", "OnInitOK");          //初始化完成
+            //Util.CallMethod("Game", "OnInitOK");          //初始化完成
         }
     }
 }

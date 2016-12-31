@@ -12,6 +12,7 @@ public class LuaFramework_LuaHelperWrap
 		L.RegFunction("GetResManager", GetResManager);
 		L.RegFunction("GetNetManager", GetNetManager);
 		L.RegFunction("GetSoundManager", GetSoundManager);
+		L.RegFunction("GetLoadMgr", GetLoadMgr);
 		L.RegFunction("Action", Action);
 		L.RegFunction("VoidDelegate", VoidDelegate);
 		L.RegFunction("OnCallLuaFunc", OnCallLuaFunc);
@@ -91,6 +92,22 @@ public class LuaFramework_LuaHelperWrap
 		{
 			ToLua.CheckArgsCount(L, 0);
 			LuaFramework.SoundManager o = LuaFramework.LuaHelper.GetSoundManager();
+			ToLua.Push(L, o);
+			return 1;
+		}
+		catch(Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int GetLoadMgr(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 0);
+			LoadMgr o = LuaFramework.LuaHelper.GetLoadMgr();
 			ToLua.Push(L, o);
 			return 1;
 		}

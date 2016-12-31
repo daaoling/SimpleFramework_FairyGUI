@@ -52,6 +52,11 @@ namespace LuaFramework {
         }
 
 
+        public static LoadMgr GetLoadMgr()
+        {
+            return AppFacade.Instance.GetManager<LoadMgr>(ManagerName.LoadMgr);
+        }
+
         public static Action Action(LuaFunction func) {
             Action action = () => {
                 func.Call();

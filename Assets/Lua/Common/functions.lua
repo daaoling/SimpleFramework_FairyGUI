@@ -20,7 +20,7 @@ end
 
 --输出日志--
 function log(str)
-    Util.Log(str);
+  Util.Log(str);
 end
 
 --错误日志--

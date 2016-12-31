@@ -7,6 +7,7 @@ public class UnityEngine_GameObjectWrap
 	public static void Register(LuaState L)
 	{
 		L.BeginClass(typeof(UnityEngine.GameObject), typeof(UnityEngine.Object));
+		L.RegFunction("SampleAnimation", SampleAnimation);
 		L.RegFunction("CreatePrimitive", CreatePrimitive);
 		L.RegFunction("GetComponent", GetComponent);
 		L.RegFunction("GetComponentInChildren", GetComponentInChildren);
@@ -23,7 +24,6 @@ public class UnityEngine_GameObjectWrap
 		L.RegFunction("BroadcastMessage", BroadcastMessage);
 		L.RegFunction("AddComponent", AddComponent);
 		L.RegFunction("Find", Find);
-		L.RegFunction("SampleAnimation", SampleAnimation);
 		L.RegFunction("SendMessage", SendMessage);
 		L.RegFunction("New", _CreateUnityEngine_GameObject);
 		L.RegFunction("__eq", op_Equality);
@@ -86,6 +86,24 @@ public class UnityEngine_GameObjectWrap
 			{
 				return LuaDLL.luaL_throw(L, "invalid arguments to ctor method: UnityEngine.GameObject.New");
 			}
+		}
+		catch(Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int SampleAnimation(IntPtr L)
+	{
+		try
+		{
+			ToLua.CheckArgsCount(L, 3);
+			UnityEngine.GameObject obj = (UnityEngine.GameObject)ToLua.CheckObject(L, 1, typeof(UnityEngine.GameObject));
+			UnityEngine.AnimationClip arg0 = (UnityEngine.AnimationClip)ToLua.CheckUnityObject(L, 2, typeof(UnityEngine.AnimationClip));
+			float arg1 = (float)LuaDLL.luaL_checknumber(L, 3);
+			obj.SampleAnimation(arg0, arg1);
+			return 0;
 		}
 		catch(Exception e)
 		{
@@ -514,24 +532,6 @@ public class UnityEngine_GameObjectWrap
 			UnityEngine.GameObject o = UnityEngine.GameObject.Find(arg0);
 			ToLua.Push(L, o);
 			return 1;
-		}
-		catch(Exception e)
-		{
-			return LuaDLL.toluaL_exception(L, e);
-		}
-	}
-
-	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-	static int SampleAnimation(IntPtr L)
-	{
-		try
-		{
-			ToLua.CheckArgsCount(L, 3);
-			UnityEngine.GameObject obj = (UnityEngine.GameObject)ToLua.CheckObject(L, 1, typeof(UnityEngine.GameObject));
-			UnityEngine.AnimationClip arg0 = (UnityEngine.AnimationClip)ToLua.CheckUnityObject(L, 2, typeof(UnityEngine.AnimationClip));
-			float arg1 = (float)LuaDLL.luaL_checknumber(L, 3);
-			obj.SampleAnimation(arg0, arg1);
-			return 0;
 		}
 		catch(Exception e)
 		{

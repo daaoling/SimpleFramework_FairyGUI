@@ -1,9 +1,8 @@
 require "events"
-require "class"
-
+require "MyApp"
 --主入口函数。从这里开始lua逻辑
 function Main() 
-  
+  MyApp.run()
 end
 
 --场景切换通知

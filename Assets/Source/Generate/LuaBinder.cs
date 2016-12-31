@@ -15,6 +15,7 @@ public static class LuaBinder
 		UIInputWrap.Register(L);
 		UIGridWrap.Register(L);
 		NetworkManagerV2Wrap.Register(L);
+		LoadMgrWrap.Register(L);
 		UIEventListenerWrap.Register(L);
 		ControllerWrap.Register(L);
 		TweenUtilsWrap.Register(L);
