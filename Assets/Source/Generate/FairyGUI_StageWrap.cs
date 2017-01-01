@@ -217,7 +217,7 @@ public class FairyGUI_StageWrap
 	{
 		try
 		{
-			ToLua.CheckArgsCount(L, 8);
+			ToLua.CheckArgsCount(L, 9);
 			FairyGUI.Stage obj = (FairyGUI.Stage)ToLua.CheckObject(L, 1, typeof(FairyGUI.Stage));
 			string arg0 = ToLua.CheckString(L, 2);
 			bool arg1 = LuaDLL.luaL_checkboolean(L, 3);
@@ -226,7 +226,8 @@ public class FairyGUI_StageWrap
 			bool arg4 = LuaDLL.luaL_checkboolean(L, 6);
 			string arg5 = ToLua.CheckString(L, 7);
 			int arg6 = (int)LuaDLL.luaL_checknumber(L, 8);
-			obj.OpenKeyboard(arg0, arg1, arg2, arg3, arg4, arg5, arg6);
+			bool arg7 = LuaDLL.luaL_checkboolean(L, 9);
+			obj.OpenKeyboard(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
 			return 0;
 		}
 		catch(Exception e)

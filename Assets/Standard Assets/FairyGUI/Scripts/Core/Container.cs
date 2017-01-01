@@ -685,6 +685,13 @@ namespace FairyGUI
 
 			base.Update(context);
 
+			if (_cacheAsBitmap && _paintingMode != 0 && _paintingFlag == 2)
+			{
+				if (onUpdate != null)
+					onUpdate();
+				return;
+			}
+
 			if (_mask != null)
 				context.EnterClipping(this.id, null, null);
 			else if (_clipRect != null)
@@ -787,15 +794,14 @@ namespace FairyGUI
 				_descendants = new List<DisplayObject>();
 			else
 				_descendants.Clear();
-			CollectChildren(this);
+			CollectChildren(this, false);
 
 			int cnt = _descendants.Count;
-			//Debug.Log("DoFairyBatching " + cnt + "," + this.cachedTransform.GetInstanceID());
 
 			int i, j, k, m;
 			object curMat, testMat, lastMat;
 			DisplayObject current, test;
-			Rect bound;
+			float[] bound;
 			for (i = 0; i < cnt; i++)
 			{
 				current = _descendants[i];
@@ -826,7 +832,10 @@ namespace FairyGUI
 							k = m;
 					}
 
-					if (bound.Overlaps(test._internal_bounds))
+					if((bound[0]> test._internal_bounds[0]? bound[0]: test._internal_bounds[0])
+						<= (bound[2] < test._internal_bounds[2] ? bound[2] : test._internal_bounds[2])
+						&& (bound[1] > test._internal_bounds[1] ? bound[1] : test._internal_bounds[1])
+						<= (bound[3] < test._internal_bounds[3] ? bound[3] : test._internal_bounds[3]))
 					{
 						if (k == -1)
 							k = m;
@@ -839,9 +848,11 @@ namespace FairyGUI
 					_descendants.Insert(k, current);
 				}
 			}
+
+			//Debug.Log("DoFairyBatching " + cnt + "," + this.cachedTransform.GetInstanceID());
 		}
 
-		private void CollectChildren(Container initiator)
+		private void CollectChildren(Container initiator, bool outlineChanged)
 		{
 			int count = _children.Count;
 			for (int i = 0; i < count; i++)
@@ -853,18 +864,34 @@ namespace FairyGUI
 					if (container._fBatchingRoot)
 					{
 						initiator._descendants.Add(container);
-						container._internal_bounds = container.GetBounds(initiator);
+						if (outlineChanged || container._outlineChanged)
+						{
+							Rect rect = container.GetBounds(initiator);
+							container._internal_bounds[0] = rect.xMin;
+							container._internal_bounds[1] = rect.yMin;
+							container._internal_bounds[2] = rect.xMax;
+							container._internal_bounds[3] = rect.yMax;
+						}
 						if (container._fBatchingRequested)
 							container.DoFairyBatching();
 					}
 					else
-						container.CollectChildren(initiator);
+						container.CollectChildren(initiator, outlineChanged || container._outlineChanged);
 				}
 				else if (child != initiator._mask)
 				{
-					child._internal_bounds = child.GetBounds(initiator);
+					if (outlineChanged || child._outlineChanged)
+					{
+						Rect rect = child.GetBounds(initiator);
+						child._internal_bounds[0] = rect.xMin;
+						child._internal_bounds[1] = rect.yMin;
+						child._internal_bounds[2] = rect.xMax;
+						child._internal_bounds[3] = rect.yMax;
+					}
 					initiator._descendants.Add(child);
 				}
+
+				child._outlineChanged = false;
 			}
 		}
 

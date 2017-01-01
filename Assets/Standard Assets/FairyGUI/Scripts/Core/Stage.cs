@@ -410,10 +410,11 @@ namespace FairyGUI
 		/// <param name="alert"></param>
 		/// <param name="textPlaceholder"></param>
 		/// <param name="keyboardType"></param>
-		public void OpenKeyboard(string text, bool autocorrection, bool multiline, bool secure, bool alert, string textPlaceholder, int keyboardType)
+		/// <param name="hideInput"></param>
+		public void OpenKeyboard(string text, bool autocorrection, bool multiline, bool secure, bool alert, string textPlaceholder, int keyboardType, bool hideInput)
 		{
 			if (_keyboard != null)
-				_keyboard.Open(text, autocorrection, multiline, secure, alert, textPlaceholder, keyboardType);
+				_keyboard.Open(text, autocorrection, multiline, secure, alert, textPlaceholder, keyboardType, hideInput);
 		}
 
 		/// <summary>
@@ -989,8 +990,8 @@ namespace FairyGUI
 					continue;
 
 				//借用一下tmpBounds
-				obj._internal_bounds.x = obj.cachedTransform.position.z;
-				obj._internal_bounds.y = i;
+				obj._internal_bounds[0] = obj.cachedTransform.position.z;
+				obj._internal_bounds[1] = i;
 
 				sTempList1.Add(obj);
 				sTempList2.Add(i);
@@ -1008,11 +1009,11 @@ namespace FairyGUI
 		static List<int> sTempList2;
 		static int CompareZ(DisplayObject c1, DisplayObject c2)
 		{
-			int ret = ((Container)c2)._internal_bounds.x.CompareTo(((Container)c1)._internal_bounds.x);
+			int ret = ((Container)c2)._internal_bounds[0].CompareTo(((Container)c1)._internal_bounds[0]);
 			if (ret == 0)
 			{
 				//如果大家z值一样，使用原来的顺序，防止不停交换顺序（闪烁）
-				return c1._internal_bounds.y.CompareTo(c2._internal_bounds.y);
+				return c1._internal_bounds[1].CompareTo(c2._internal_bounds[1]);
 			}
 			else
 				return ret;

@@ -1,38 +1,50 @@
-local BasePage = class("UIPage")
+local BasePage = class("BasePage")
 
-function BasePage:ctor()
-  self:mainCom = nil
+function BasePage:ctor(mResident, pkgPath, mainPath)
+  self.mainCom = nil
+  self.mResident = mResident
+  self.pkgPath = pkgPath
+  self.mainPath = mainPath
 end
 
 function BasePage:Create()
+--  self:mainCom = UIPackage.CreateObject(pkgPath, mainPath)
+--  self:mainCom:SetSize(GRoot.inst:width, GRoot.inst:height)
+--  self:mainCom:AddRelation(GRoot.inst, RelationType.Size)
+--  GRoot.inst:AddChild(mainCom)
+
+  self.mainCom = FairyGUI.UIPackage.CreateObject(self.pkgPath, self.mainPath)
+  self.mainCom:SetSize(FairyGUI.GRoot.inst.width, FairyGUI.GRoot.inst.height)
+  self.mainCom:AddRelation(FairyGUI.GRoot.inst, FairyGUI.RelationType.Size)
+  FairyGUI.GRoot.inst:AddChild(self.mainCom)
+  
   self:OnInitWidget()
 end
 
 function BasePage:Show()
-  if not self:mainCom then
+  if not self.mainCom then
     self:Create()
   end
-  
-  self:mainCom:visible = true
   self:OnWillApprear()
+  
+  self.mainCom.visible = true
   self:OnDidAppear()
 end
 
-
-
-
 function BasePage:Hide()
-  self:mainCom:visible = false
   self:OnWillDisappear()
+  
   self:OnDidDisappear()
+  if self.mResident then
+    self.mainCom.visible = false
+  else
+    self:Destroy()
+  end
 end
 
-
-
-
 function BasePage:Destroy()
-  this.mainCom.Dispose();
-  this.mainCom = null;
+  self.mainCom:Dispose();
+  self.mainCom = null;
   self:OnRealseWidget();
 end
 

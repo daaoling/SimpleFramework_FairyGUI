@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using FairyGUI;
 
 namespace LuaFramework
 {
@@ -9,7 +10,7 @@ namespace LuaFramework
         /// <summary>
         /// 初始化游戏管理器
         /// </summary>
-        void Awake()
+        void Start()
         {
             Init();
         }
@@ -24,6 +25,9 @@ namespace LuaFramework
 
         public void OnResourceInited()
         {
+            UIConfig.defaultFont = "afont";
+            GRoot.inst.SetContentScaleFactor(1152, 648);
+
             LuaManager.InitStart();
             //LuaManager.DoFile("Logic/Game");            //加载游戏
             //LuaManager.DoFile("Logic/Network");         //加载网络

@@ -30,7 +30,7 @@ public class fairygui_test : MonoBehaviour
 
         yield return new WaitForSeconds(10.0f);
 
-        mainView.Dispose();
+        //mainView.Dispose();
 	}
     GComponent mainView;
 
@@ -51,14 +51,21 @@ public class fairygui_test : MonoBehaviour
         mainView.AddRelation(GRoot.inst, RelationType.Size);
         GRoot.inst.AddChild(mainView);
 
-
-        GComponent n9 = mainView.GetChild("n9").asCom;
-        GComponent mainView2 = UIPackage.CreateObject("Main", "Main").asCom;
-        n9.AddChild(mainView2);
+        mainView.onClick.Add(DemoFinish);
+        //GComponent n9 = mainView.GetChild("n9").asCom;
+        //GComponent mainView2 = UIPackage.CreateObject("Main", "Main").asCom;
+        //n9.AddChild(mainView2);
     }
 
-    void DemoFinish()
+    void DemoFinish(EventContext context)
     {
-        mainView.Dispose();
+        Debug.Log("NOW click " + context.sender + context.data);
+        if ((context.sender is GComponent))
+            Debug.Log("NOW click "
+                + (context.sender as GComponent).name
+                    + " => "
+                        + (context.sender as GComponent).gameObjectName);
+        
+        //mainView.Dispose();
     }
 }

@@ -78,6 +78,7 @@ public class FairyGUI_DisplayObjectWrap
 		L.RegVar("worldSpaceContainer", get_worldSpaceContainer, null);
 		L.RegVar("touchable", get_touchable, set_touchable);
 		L.RegVar("paintingMode", get_paintingMode, null);
+		L.RegVar("cacheAsBitmap", get_cacheAsBitmap, set_cacheAsBitmap);
 		L.RegVar("filter", get_filter, set_filter);
 		L.RegVar("blendMode", get_blendMode, set_blendMode);
 		L.RegVar("home", get_home, set_home);
@@ -1397,6 +1398,25 @@ public class FairyGUI_DisplayObjectWrap
 	}
 
 	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int get_cacheAsBitmap(IntPtr L)
+	{
+		object o = null;
+
+		try
+		{
+			o = ToLua.ToObject(L, 1);
+			FairyGUI.DisplayObject obj = (FairyGUI.DisplayObject)o;
+			bool ret = obj.cacheAsBitmap;
+			LuaDLL.lua_pushboolean(L, ret);
+			return 1;
+		}
+		catch(Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e, o == null ? "attempt to index cacheAsBitmap on a nil value" : e.Message);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
 	static int get_filter(IntPtr L)
 	{
 		object o = null;
@@ -2051,6 +2071,25 @@ public class FairyGUI_DisplayObjectWrap
 		catch(Exception e)
 		{
 			return LuaDLL.toluaL_exception(L, e, o == null ? "attempt to index touchable on a nil value" : e.Message);
+		}
+	}
+
+	[MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+	static int set_cacheAsBitmap(IntPtr L)
+	{
+		object o = null;
+
+		try
+		{
+			o = ToLua.ToObject(L, 1);
+			FairyGUI.DisplayObject obj = (FairyGUI.DisplayObject)o;
+			bool arg0 = LuaDLL.luaL_checkboolean(L, 2);
+			obj.cacheAsBitmap = arg0;
+			return 0;
+		}
+		catch(Exception e)
+		{
+			return LuaDLL.toluaL_exception(L, e, o == null ? "attempt to index cacheAsBitmap on a nil value" : e.Message);
 		}
 	}
 

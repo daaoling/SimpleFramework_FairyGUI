@@ -267,3 +267,11 @@ function iskindof(obj, classname)
 
     return false
 end
+
+
+
+function handler(obj, method)
+    return function(...)
+       return method(obj,...)
+    end
+end

@@ -1,5 +1,6 @@
 require "framework/class_function"
+framework_baseScene = require "framework/BaseScene"
+framework_ui_basePage = require "framework/ui/BasePage"
+require "framework/ui/UIMgr"
+require "framework/CtrlManager"
 
---ui.BasePage = require "ui/BasePage"
---ui.UIMgr = require "ui/UIMgr" 
---UIMgrInstance = ui.UIMgr.new()

@@ -155,6 +155,7 @@ namespace LuaInterface
 
         public static bool CheckType(IntPtr L, Type t, int pos)
         {
+            //Debug.Log(" Type t  " + t.ToString());
             //默认都可以转 object
             if (t == typeof(object))
             {
@@ -162,8 +163,8 @@ namespace LuaInterface
             }
 
             t = GetNullableType(t);
-            LuaTypes luaType = LuaDLL.lua_type(L, pos);            
-
+            LuaTypes luaType = LuaDLL.lua_type(L, pos);
+            //Debug.Log(" luaType  " + luaType.ToString() + " GetNullableType " +  t.ToString());
             switch (luaType)
             {
                 case LuaTypes.LUA_TNUMBER:

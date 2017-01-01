@@ -1,17 +1,37 @@
-local UIMgr = class("UIMgr")
+local M = { }
 
-function UIMgr:ctor()
-  self.pages = {}
+UIMgr = M
+
+M.pages = nil
+
+function M.Init(panelList)
+  M.pages = {}
+	logWarn("UIMgr.Init----->>>");
+  for k,v in pairs(panelList) do
+     M.pages[k] = require("View/"..v).new()
+  end
 end
 
-function UIMgr:ShowPage(pageName)
-  curPage = self.pages[pageName]
+function M.ShowPage(pageName)
+  local curPage = M.pages[pageName]
   curPage:Show()
 end
 
-function UIMgr:Hide(pageName)
-  curPage = self.pages[pageName]
+function M.Hide(pageName)
+  local curPage = M.pages[pageName]
   curPage:Hide()
 end
 
-return UIMgr
+function M.ClearScene()
+  for k,page in pairs(M.pages) do
+    page:Hide()
+    
+    local mResident = page.mResident
+    if mResident ~= false then
+      page:Destroy()
+    end
+  
+  end
+end
+
+return M

@@ -2,33 +2,26 @@ require "Common/define"
 require "Common/functions"
 require "framework/init"
 
-MyApp = {}
+local M = {}
 
-local this = MyApp
+MyApp = M
 
-this.CurSeneName = nil
+M.curScene = nil
 
-this.Scenes = {}
-this.Scenes["LoginScene"] = require("scenes/LoginScene").new()
-this.Scenes["MainScene"] = require("scenes/MainScene").new()
-
-function MyApp.run()
-  this.enterScene("LoginScene")
+function M.run()
+  M.enterScene("LoginScene")
 end
 
-function MyApp.enterScene(SceneName)
-  if this.CurSeneName ~= SceneName then
-    
-    if this.CurSeneName then
-      this.Scenes[this.CurSeneName]:OnExit()
-    end
-    
-    this.CurSeneName = SceneName
-    
-    loadMgr:ReplaceScene("", this.OnLoadFinish)
+function M.enterScene(SceneName)
+  if M.curScene then
+      M.curScene:OnExit()
   end
+  M.curScene = require("scenes/"..SceneName).new()
+  loadMgr:ReplaceScene(M.curScene.ablist, M.OnLoadFinish)
 end
 
-function MyApp.OnLoadFinish()
-  this.Scenes[this.CurSeneName]:OnEnter()
+function M.OnLoadFinish()
+  M.curScene:OnEnter()
 end
+
+return M

@@ -6,8 +6,29 @@ CtrlNames = {
 
 PanelNames = {
   "PromptPanel",	
-  "MessagePanel"
+  "MessagePanel",
+  "DenLu",
+  "Main"
+  
 }
+
+DengLuPanelList= {
+  DengLuPanel = "DengLuPanel"
+}
+DengLuCtrlList = {
+  DenLuCtrl = "DenLuCtrl"
+}
+
+MainPanelList = {
+  MainPanel = "MainPanel"
+}
+
+MainCtrlList = {
+  MainCtrl = "MainCtrl"
+}
+
+
+
 
 --协议类型--
 ProtocalType = {

@@ -118,6 +118,7 @@ public class FairyGUI_EventListenerWrap
 
 			if (count == 2 && TypeChecker.CheckTypes(L, 1, typeof(FairyGUI.EventListener), typeof(FairyGUI.EventCallback0)))
 			{
+                
 				FairyGUI.EventListener obj = (FairyGUI.EventListener)ToLua.ToObject(L, 1);
 				FairyGUI.EventCallback0 arg0 = null;
 				LuaTypes funcType2 = LuaDLL.lua_type(L, 2);
