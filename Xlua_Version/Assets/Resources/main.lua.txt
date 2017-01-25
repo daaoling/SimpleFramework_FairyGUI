@@ -1,0 +1,12 @@
+function OnClick()
+	print("OnClick")
+end
+
+function startMain() 
+	print('startMain')	
+	mainCom = CS.FairyGUI.UIPackage.CreateObject("DengLu", "Main")
+	mainCom:SetSize(CS.FairyGUI.GRoot.inst.width, CS.FairyGUI.GRoot.inst.height)
+	mainCom:AddRelation(CS.FairyGUI.GRoot.inst, CS.FairyGUI.RelationType.Size)
+	CS.FairyGUI.GRoot.inst:AddChild(mainCom)
+	mainCom.onClick:Add(OnClick)
+end
