@@ -169,6 +169,8 @@ namespace LuaInterface
 
         public virtual byte[] ReadFile(string fileName)
         {
+            //Debug.Log(" ReadFile " + fileName);
+
             if (!beZip)
             {
                 string path = FindFile(fileName);
@@ -183,6 +185,8 @@ namespace LuaInterface
 #endif
                 }
 
+                //Debug.Log(" ReadFile str " + str);
+
                 return str;
             }
             else
@@ -193,6 +197,8 @@ namespace LuaInterface
 
         public virtual string FindFileError(string fileName)
         {
+            //UnityEngine.Debug.Log(" FindFileError " + fileName);
+
             if (Path.IsPathRooted(fileName))
             {
                 return fileName;
@@ -207,6 +213,7 @@ namespace LuaInterface
 
             for (int i = 0; i < searchPaths.Count; i++)
             {
+                UnityEngine.Debug.Log(" FindFileError " + searchPaths[i]);
                 sb.AppendFormat("\n\tno file '{0}'", searchPaths[i]);
             }
 

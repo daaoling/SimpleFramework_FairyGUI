@@ -613,6 +613,7 @@ namespace LuaInterface
             LuaGetGlobal("package");
             LuaGetField(-1, "path");
             string current = LuaToString(-1);
+            Debug.Log(" current  " + current);
             string[] paths = current.Split(';');
 
             for (int i = 0; i < paths.Length; i++)
