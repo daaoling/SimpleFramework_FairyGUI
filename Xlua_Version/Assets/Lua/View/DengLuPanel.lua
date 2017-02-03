@@ -10,7 +10,7 @@ function DengLuPanel:OnClick()
 end
 
 function DengLuPanel:OnInitWidget()
-  self.mainCom.onClick:Add(FairyGUI.EventCallback0(handler(self, DengLuPanel.OnClick)))
+  self.mainCom.onClick:Add(handler(self, DengLuPanel.OnClick))
 end
 
 return DengLuPanel

@@ -17,6 +17,7 @@ function M.enterScene(SceneName)
       M.curScene:OnExit()
   end
   M.curScene = require("scenes/"..SceneName).new()
+  --M.curScene:OnEnter()
   loadMgr:ReplaceScene(M.curScene.ablist, M.OnLoadFinish)
 end
 

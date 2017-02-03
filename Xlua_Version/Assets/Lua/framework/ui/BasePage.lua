@@ -13,10 +13,10 @@ function BasePage:Create()
 --  self:mainCom:AddRelation(GRoot.inst, RelationType.Size)
 --  GRoot.inst:AddChild(mainCom)
 
-  self.mainCom = FairyGUI.UIPackage.CreateObject(self.pkgPath, self.mainPath)
-  self.mainCom:SetSize(FairyGUI.GRoot.inst.width, FairyGUI.GRoot.inst.height)
-  self.mainCom:AddRelation(FairyGUI.GRoot.inst, FairyGUI.RelationType.Size)
-  FairyGUI.GRoot.inst:AddChild(self.mainCom)
+  self.mainCom = CS.FairyGUI.UIPackage.CreateObject(self.pkgPath, self.mainPath)
+  self.mainCom:SetSize(CS.FairyGUI.GRoot.inst.width, CS.FairyGUI.GRoot.inst.height)
+  self.mainCom:AddRelation(CS.FairyGUI.GRoot.inst, CS.FairyGUI.RelationType.Size)
+  CS.FairyGUI.GRoot.inst:AddChild(self.mainCom)
   
   self:OnInitWidget()
 end
