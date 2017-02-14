@@ -15,9 +15,15 @@ public class LuaManager : Singleton<LuaManager>
     public void Start() 
     {
         luaenv = new LuaEnv();
-        
+    
         InitLuaPath();
         AddLuaLoader();
+    }
+
+
+    public void Release() 
+    {
+        luaenv.Dispose();
     }
 
     #region Init

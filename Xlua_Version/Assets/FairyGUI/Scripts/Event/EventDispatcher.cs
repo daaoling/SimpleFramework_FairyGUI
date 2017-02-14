@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using XLua;
 
 namespace FairyGUI
 {
-    [CSharpCallLua]
 	public delegate void EventCallback0();
-    [CSharpCallLua]
 	public delegate void EventCallback1(EventContext context);
 
 	/// <summary>

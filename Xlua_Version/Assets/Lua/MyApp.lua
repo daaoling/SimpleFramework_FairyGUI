@@ -9,6 +9,7 @@ MyApp = M
 M.curScene = nil
 
 function M.run()
+  --print("M.run")
   M.enterScene("LoginScene")
 end
 

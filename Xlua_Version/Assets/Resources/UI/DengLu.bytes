@@ -1,9 +1,9 @@
-inq91.xml|361|<component size="1152,648">
+inq91.xml|376|<component size="1152,648">
   <displayList>
     <image id="n0" name="n0" src="inq93" xy="0,0" size="1152,648">
       <relation target="" sidePair="width-width,height-height"/>
     </image>
-    <component id="n8" name="n8" src="nwu8b" xy="392,228">
+    <component id="n8" name="n8" src="nwu8b" xy="389,182" size="374,283">
       <relation target="" sidePair="center-center,middle-middle"/>
     </component>
   </displayList>

@@ -15,6 +15,7 @@ end
 function M.ShowPage(pageName)
   local curPage = M.pages[pageName]
   curPage:Show()
+  return curPage
 end
 
 function M.Hide(pageName)

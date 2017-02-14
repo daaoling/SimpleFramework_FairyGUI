@@ -6,7 +6,7 @@ using FairyGUI;
 
 public class Main : MonoBehaviour {
 
-    LuaEnv luaenv = null;
+    //LuaEnv luaenv = null;
 
 
     void Awake()
@@ -61,8 +61,9 @@ public class Main : MonoBehaviour {
     //    }
     //}
 
-    //void OnDestroy()
-    //{
-    //    luaenv.Dispose();
-    //}
+    void OnDestroy()
+    {
+        GameManager.Instance.Release();
+        LuaManager.Instance.Release();
+    }
 }

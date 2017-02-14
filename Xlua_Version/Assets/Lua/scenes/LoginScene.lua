@@ -14,7 +14,7 @@ function LoginScene:OnEnter()
   UIMgr.Init(DengLuPanelList)
   --  init crlt
   CtrlManager.Init(DengLuCtrlList)
-  CtrlManager.GetCtrl(DengLuCtrlList.DenLuCtrl):Start()
+  CtrlManager.GetCtrl(DengLuCtrlList.DenLuCtrl).Start()
 end
 
 
