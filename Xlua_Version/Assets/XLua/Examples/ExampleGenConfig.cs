@@ -55,7 +55,9 @@ public static class ExampleGenConfig
                 typeof(Action<string>),
                 typeof(Action<double>),
                 typeof(UnityEngine.Events.UnityAction),
-                typeof(System.Collections.IEnumerator)
+                typeof(System.Collections.IEnumerator),
+                typeof(FairyGUI.EventCallback0),
+                typeof(FairyGUI.EventCallback1),
             };
 
     //黑名单

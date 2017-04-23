@@ -6,8 +6,8 @@ local dengLuPanel
 function DenLuCtrl.Start()
   log("MainCtrl:Start")
   dengLuPanel = UIMgr.ShowPage(DengLuPanelList.DengLuPanel)
-  dengLuPanel.LoginBtn.onClick:Add(handler(self, DenLuCtrl.Login))
-  dengLuPanel.RegisterBtn.onClick:Add(DenLuCtrl.Register)  
+--  dengLuPanel.LoginBtn.onClick:Add(DenLuCtrl.Login)
+--  dengLuPanel.RegisterBtn.onClick:Add(DenLuCtrl.Register)  
 end
 
 --function DenLuCtrl.Handle(context)
@@ -15,10 +15,10 @@ end
 --  local senderName = context.sender.name
 --end
 
-function DenLuCtrl:Login()
-  print("DenLuCtrl.Login"..self.name)
---  print(dengLuPanel.LoginInput.text.."Login")
---  print(dengLuPanel.RegisterInput.text.."Register")
+function DenLuCtrl.Login()
+  print("DenLuCtrl.Login")
+  print(dengLuPanel.LoginInput.text.."Login")
+  print(dengLuPanel.RegisterInput.text.."Register")
 end
 
 

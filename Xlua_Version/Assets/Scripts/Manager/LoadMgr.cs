@@ -99,7 +99,12 @@ public class LoadMgr : UnitySingleton<LoadMgr>
 //        }
 //
 		finish_func();
+        finish_func = null;
         this.enabled = false;
     }
-   
+
+    void OnDestroy()
+    {
+        if (finish_func != null) finish_func = null;
+    }
 }

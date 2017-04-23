@@ -69,7 +69,6 @@ namespace XLua
         Stateful = 1,
     }
 
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Struct)]
     public class HotfixAttribute : Attribute
     {
         HotfixFlag flag;
@@ -92,6 +91,7 @@ namespace XLua
     {
     }
 
+#if !XLUA_GENERAL
     public static class SysGenConfig
     {
         [GCOptimize]
@@ -126,6 +126,7 @@ namespace XLua
             }
         }
     }
+#endif
 }
 
 

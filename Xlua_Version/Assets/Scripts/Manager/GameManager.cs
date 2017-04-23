@@ -26,7 +26,7 @@ public class GameManager : Singleton<GameManager>
     }
 
 
-    public void Release() { }
+
 
 
 	void InitUISetting()
@@ -46,10 +46,12 @@ public class GameManager : Singleton<GameManager>
 
 		Action main = LuaManager.Instance.luaenv.Global.Get<Action>("Main");
 		//映射到一个delgate，要求delegate加到生成列表，否则返回null，建议用法
-		main();
+        main();
 	}
 
     public void Update() { }
+
+    public void Release() { }
 }
 
 
