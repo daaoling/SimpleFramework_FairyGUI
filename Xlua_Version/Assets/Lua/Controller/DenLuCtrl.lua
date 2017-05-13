@@ -6,8 +6,8 @@ local dengLuPanel
 function DenLuCtrl.Start()
   log("MainCtrl:Start")
   dengLuPanel = UIMgr.ShowPage(DengLuPanelList.DengLuPanel)
---  dengLuPanel.LoginBtn.onClick:Add(DenLuCtrl.Login)
---  dengLuPanel.RegisterBtn.onClick:Add(DenLuCtrl.Register)  
+  dengLuPanel.LoginBtn.onClick:Add(DenLuCtrl.Login)
+  dengLuPanel.RegisterBtn.onClick:Add(DenLuCtrl.Register)  
 end
 
 --function DenLuCtrl.Handle(context)

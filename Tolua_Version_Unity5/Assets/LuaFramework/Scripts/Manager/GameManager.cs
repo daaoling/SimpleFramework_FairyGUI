@@ -47,8 +47,7 @@ namespace LuaFramework {
             string dataPath = Util.DataPath;  //数据目录
             string resPath = Util.AppContentPath(); //游戏包资源目录
 
-            if (Directory.Exists(dataPath))
-                Directory.Delete(dataPath, true);
+            if (Directory.Exists(dataPath)) Directory.Delete(dataPath, true);
             Directory.CreateDirectory(dataPath);
 
             string infile = resPath + "files.txt";
@@ -62,8 +61,7 @@ namespace LuaFramework {
                 WWW www = new WWW(infile);
                 yield return www;
 
-                if (www.isDone)
-                {
+                if (www.isDone) {
                     File.WriteAllBytes(outfile, www.bytes);
                 }
                 yield return 0;
@@ -88,8 +86,7 @@ namespace LuaFramework {
                     WWW www = new WWW(infile);
                     yield return www;
 
-                    if (www.isDone)
-                    {
+                    if (www.isDone) {
                         File.WriteAllBytes(outfile, www.bytes);
                     }
                     yield return 0;
