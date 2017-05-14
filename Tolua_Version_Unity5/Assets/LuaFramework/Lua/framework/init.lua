@@ -1,0 +1,6 @@
+require ("framework.class_function")
+require ("framework.BaseScene")
+require("framework.MyApp")
+require ("framework.CtrlMgr")
+require ("framework.ui.BasePage")
+require ("framework.ui.UIMgr")

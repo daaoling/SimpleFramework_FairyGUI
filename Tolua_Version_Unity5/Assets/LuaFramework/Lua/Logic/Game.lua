@@ -1,4 +1,4 @@
-require "3rd/pblua/login_pb"
+require "3rd/pblua/Login_pb"
 require "3rd/pbc/protobuf"
 
 local lpeg = require "lpeg"
@@ -10,10 +10,15 @@ local sproto = require "3rd/sproto/sproto"
 local core = require "sproto.core"
 local print_r = require "3rd/sproto/print_r"
 
+require "Common/define"
+require "Common/functions"
+
 require "Logic/LuaClass"
 require "Logic/CtrlManager"
-require "Common/functions"
+
 require "Controller/PromptCtrl"
+
+local config = require "Config"
 
 --管理器--
 Game = {};
@@ -30,30 +35,66 @@ function Game.InitViewPanels()
 	end
 end
 
+
 --初始化完成，发送链接服务器信息--
-function Game.OnInitOK()
-    AppConst.SocketPort = 2012;
-    AppConst.SocketAddress = "127.0.0.1";
-    networkMgr:SendConnect();
+function Game.OnInitOK()    
+  
+--    AppConst.SocketPort = 10000;
+--    AppConst.SocketAddress = "127.0.0.1";
+--    networkMgr:SendConnect();
 
     --注册LuaView--
-    this.InitViewPanels();
+--    this.InitViewPanels();
 
-    this.test_class_func();
-    this.test_pblua_func();
-    this.test_cjson_func();
-    this.test_pbc_func();
-    this.test_lpeg_func();
-    this.test_sproto_func();
-    coroutine.start(this.test_coroutine);
+    --测试第三方库功能--
+--    this.test_clas  s_func();
+--    this.test_pblua_func();
+--    this.test_cjson_func();
+--    this.test_pbc_func();
+--    this.test_lpeg_func();
+--    this.test_sproto_func();
+--    coroutine.start(this.test_coroutine);
 
     CtrlManager.Init();
     local ctrl = CtrlManager.GetCtrl(CtrlNames.Prompt);
     if ctrl ~= nil and AppConst.ExampleMode == 1 then
         ctrl:Awake();
     end
-       
-    logWarn('LuaFramework InitOK--->>>');
+
+
+--    local timer = Timer.New(this.register, 1, false, false)
+--    timer:Start()
+    log('Game.OnInitOK--->>>');
+--    Event.AddListener("signal",this.handler);
+
+--    log('LuaFramework InitOK--->>>');
+--    log(config.DemoByID[101].Name)
+end
+
+function Game.register()
+  log("register")
+  local register = Login_pb.RegisterRequest()
+  register.name = 'zjy';
+  register.password = '123';
+  local msg = register:SerializeToString();
+  
+  local buffer = ByteBuffer.New();
+  buffer:WriteInt(Opcodes.register);
+  buffer:WriteBuffer(msg);
+  networkMgr:SendMessage(buffer);
+end
+
+function Game.login()
+  log("test")
+  local login = Login_pb.LoginRequest()
+  login.name = 'zjy';
+  login.password = '123';
+  local msg = login:SerializeToString();
+  
+  local buffer = ByteBuffer.New();
+  buffer:WriteInt(Opcodes.login);
+  buffer:WriteBuffer(msg);
+  networkMgr:SendMessage(buffer); 
 end
 
 --测试协同--
@@ -62,7 +103,7 @@ function Game.test_coroutine()
     coroutine.wait(1);	
     logWarn("2222");
 	
-    local www = WWW("http://bbs.ulua.org/readme.txt");
+    local www = WWW("http://doc.ulua.org/readme.txt");
     coroutine.www(www);
     logWarn(www.text);    	
 end

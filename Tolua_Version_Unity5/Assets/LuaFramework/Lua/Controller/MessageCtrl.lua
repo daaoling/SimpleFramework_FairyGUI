@@ -21,6 +21,9 @@ end
 function MessageCtrl.OnCreate(obj)
 	gameObject = obj;
 
+	local panel = gameObject:GetComponent('UIPanel');
+	panel.depth = 10;	--设置纵深--
+
 	message = gameObject:GetComponent('LuaBehaviour');
 	message:AddClick(MessagePanel.btnClose, this.OnClick);
 

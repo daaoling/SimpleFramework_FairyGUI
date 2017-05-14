@@ -3,7 +3,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using FairyGUI;
+using LuaInterface;
 using System.Linq;
+
 /// <summary>
 /// 场景加载前的资源加载
 /// </summary>
@@ -16,7 +18,7 @@ public class LoadMgr : UnitySingleton<LoadMgr>
 		this.enabled = false; 
 	}
 
-    public void ReplaceScene(string uiPacList, Action func = null)
+    public void ReplaceScene(string uiPacList, LuaFunction func = null)
     {
         this.requestQueue = new Queue<Callback>();
         this.allIndex = 0;
@@ -84,22 +86,23 @@ public class LoadMgr : UnitySingleton<LoadMgr>
         GUI.Label(new Rect(10, 10, 1500, 100), "当前比例 " + (float)curIndex / (float)allIndex + "");
     }
     
-    Action finish_func;
+    //Action finish_func;
+    LuaFunction finish_func;
     void OnProgressFinish() 
     {
         Debug.Log(" OnProgressFinish ");
 
-//        if (this.finish_func != null)
-//        {
-//            this.finish_func.BeginPCall();
-//            this.finish_func.PCall();
-//            this.finish_func.EndPCall();
-//            this.finish_func.Dispose();
-//            this.finish_func = null;
-//        }
+        if (this.finish_func != null)
+        {
+            this.finish_func.BeginPCall();
+            this.finish_func.PCall();
+            this.finish_func.EndPCall();
+            this.finish_func.Dispose();
+            this.finish_func = null;
+        }
 //
-		finish_func();
-        finish_func = null;
+        //finish_func();
+        //finish_func = null;
         this.enabled = false;
     }
 

@@ -1,10 +1,11 @@
 require "events"
 
+
 --主入口函数。从这里开始lua逻辑
 function Main() 
-  require("MyApp")
-  
-  MyApp.run()  
+    require("MyApp").new().run()
+    --require("Controller..DenLuCtrl")
+    --MyApp.run()
 --  print("hello world")
 end
 

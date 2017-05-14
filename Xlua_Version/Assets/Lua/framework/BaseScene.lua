@@ -1,5 +1,6 @@
-local BaseScene = class("BaseScene")
-
+class("BaseScene")
+---@class BaseScene
+---@field public ablist string
 function BaseScene:ctor(uipackList)
   self.ablist = ""
   for i, PanelName in ipairs(uipackList) do

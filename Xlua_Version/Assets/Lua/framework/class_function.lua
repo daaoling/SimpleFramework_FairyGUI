@@ -218,15 +218,15 @@ function class(classname, super)
             return instance
         end
     end
-
+    _G[classname] = cls
     return cls
 end
 
 
 -- 提供假名以避免和 moonscript 发生冲突
-function quick_class(classname, super)
-  return class(classname, super)
-end
+--function quick_class(classname, super)
+--    return class(classname, super)
+--end
 
 
 
@@ -270,18 +270,18 @@ end
 
 function handler_noarg(obj, method)
     return function()
-       return method(obj)
+        return method(obj)
     end
 end
 
 function handler_arg1(obj, method, arg1)
     return function(arg1)
-       return method(obj,arg1)
+        return method(obj,arg1)
     end
 end
 
 function handler(obj, method)
     return function(...)
-       return method(obj,...)
+        return method(obj,...)
     end
 end

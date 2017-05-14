@@ -1,4 +1,4 @@
-require "Common/define"
+--require "Common/define"
 
 require "3rd/pblua/login_pb"
 require "3rd/pbc/protobuf"
@@ -23,59 +23,101 @@ end
 
 function PromptCtrl.Awake()
 	logWarn("PromptCtrl.Awake--->>");
-	panelMgr:CreatePanel('Prompt', this.OnCreate);
+  
+  FairyGUI.GRoot.inst:SetContentScaleFactor(1152,648);
+  FairyGUI.UIPackage.AddPackage("UI/DengLu");
+  mainView = FairyGUI.UIPackage.CreateObject("DengLu","Main");
+  mainView:SetSize(FairyGUI.GRoot.inst.width, FairyGUI.GRoot.inst.height);
+  mainView:AddRelation(FairyGUI.GRoot.inst, FairyGUI.RelationType.Size);
+  FairyGUI.GRoot.inst:AddChild(mainView);
+  
 end
 
 --启动事件--
 function PromptCtrl.OnCreate(obj)
-	gameObject = obj;
-	transform = obj.transform;
+--	gameObject = obj;
+--	transform = obj.transform;
 
-	panel = transform:GetComponent('UIPanel');
-	prompt = transform:GetComponent('LuaBehaviour');
-	logWarn("Start lua--->>"..gameObject.name);
+--	panel = transform:GetComponent('UIPanel');
+--	prompt = transform:GetComponent('LuaBehaviour');
+--	logWarn("Start lua--->>"..gameObject.name);
 
-	prompt:AddClick(PromptPanel.btnOpen, this.OnClick);
-	resMgr:LoadPrefab('prompt', { 'PromptItem' }, this.InitPanel);
+--	this.InitPanel();	--初始化面板--
+----  prompt:AddClick(PromptPanel.btnOpen, this.OnClick);
+--  listener = UIEventListener.Get(PromptPanel.btnOpen)
+--  AddClick(PromptPanel.btnRegister, this.Register)
+--  AddClick(PromptPanel.btnLogin, this.Login)
+--  local timer = Timer.New(this.delay,5,false,true)
+--  timer:Start()
 end
+
+--function PromptCtrl.delay()
+--  print "clear"
+--  RemoveClick(listener, this.OnClick)
+--end
+
 
 --初始化面板--
-function PromptCtrl.InitPanel(objs)
-	local count = 100; 
+function PromptCtrl.InitPanel()
+	panel.depth = 1;	--设置纵深--
 	local parent = PromptPanel.gridParent;
-	for i = 1, count do
-		local go = newObject(objs[0]);
-		go.name = 'Item'..tostring(i);
-		go.transform:SetParent(parent);
+	local itemPrefab = prompt:LoadAsset('PromptItem');
+	for i = 1, 100 do
+		local go = newObject(itemPrefab);
+		go.name = tostring(i);
+		go.transform.parent = parent;
 		go.transform.localScale = Vector3.one;
 		go.transform.localPosition = Vector3.zero;
-        prompt:AddClick(go, this.OnItemClick);
+		prompt:AddClick(go, this.OnItemClick);
 
-	    local label = go.transform:FindChild('Text');
-	    label:GetComponent('Text').text = tostring(i);
+		local goo = go.transform:FindChild('Label');
+		goo:GetComponent('UILabel').text = i;
 	end
+	local grid = parent:GetComponent('UIGrid');
+	grid:Reposition();
+	grid.repositionNow = true;
+	parent:GetComponent('WrapGrid'):InitGrid();
 end
 
---滚动项单击--
-function PromptCtrl.OnItemClick(go)
-    log(go.name);
+
+function PromptCtrl.Register(go)
+--	if TestProtoType == ProtocalType.BINARY then
+--		this.TestSendBinary();
+--	end
+--	if TestProtoType == ProtocalType.PB_LUA then
+--		this.TestSendPblua();
+--	end
+--	if TestProtoType == ProtocalType.PBC then
+--		this.TestSendPbc();
+--	end
+--	if TestProtoType == ProtocalType.SPROTO then
+--		this.TestSendSproto();
+--	end
+	log("OnClick---->>>"..go.name);
+	log("OnClick---->>>"..PromptPanel.roleName.value);
+  log("OnClick---->>>"..PromptPanel.password.value);
+  this.TestItSelf();
+--    this.TestSendPblua();
 end
 
---单击事件--
-function PromptCtrl.OnClick(go)
-	if TestProtoType == ProtocalType.BINARY then
-		this.TestSendBinary();
-	end
-	if TestProtoType == ProtocalType.PB_LUA then
-		this.TestSendPblua();
-	end
-	if TestProtoType == ProtocalType.PBC then
-		this.TestSendPbc();
-	end
-	if TestProtoType == ProtocalType.SPROTO then
-		this.TestSendSproto();
-	end
-	logWarn("OnClick---->>>"..go.name);
+--滚动项单击事件--
+function PromptCtrl.Login(go)
+	log(go.name);
+end
+
+
+
+function PromptCtrl.TestItSelf()
+  local login = Login_pb.LoginRequest()
+  login.id = 2000;
+  login.name = 'game';
+  login.email = 'jarjin@163.com';
+  local msg = login:SerializeToString();
+  
+  local buffer = ByteBuffer.New();
+  buffer:WriteInt(Opcodes.login);
+  buffer:WriteBuffer(msg);
+  networkMgr:SendMessage(buffer); 
 end
 
 --测试发送SPROTO--
